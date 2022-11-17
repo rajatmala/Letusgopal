@@ -54,9 +54,9 @@ const IllustrationImage = styled.div`
 `;
 
 export default ({
-  logoLinkUrl = "#",
+  logoLinkUrl = "/",
   illustrationImageSrc = illustration,
-  headingText = "Sign In To Treact",
+  headingText = "Sign In To Let's GoPal",
   socialButtons = [
     {
       iconImageSrc: googleIconImageSrc,
@@ -71,7 +71,7 @@ export default ({
   ],
   submitButtonText = "Sign In",
   SubmitButtonIcon = LoginIcon,
-  forgotPasswordUrl = "#",
+  // forgotPasswordUrl = "#",
   signupUrl = "#",
 
 }) => (
@@ -85,7 +85,7 @@ export default ({
           <MainContent>
             <Heading>{headingText}</Heading>
             <FormContainer>
-              <SocialButtonsContainer>
+              {/* <SocialButtonsContainer>
                 {socialButtons.map((socialButton, index) => (
                   <SocialButton key={index} href={socialButton.url}>
                     <span className="iconContainer">
@@ -97,7 +97,7 @@ export default ({
               </SocialButtonsContainer>
               <DividerTextContainer>
                 <DividerText>Or Sign in with your e-mail</DividerText>
-              </DividerTextContainer>
+              </DividerTextContainer> */}
               <Form>
                 <Input type="email" placeholder="Email" />
                 <Input type="password" placeholder="Password" />
@@ -106,14 +106,14 @@ export default ({
                   <span className="text">{submitButtonText}</span>
                 </SubmitButton>
               </Form>
-              <p tw="mt-6 text-xs text-gray-600 text-center">
+              {/* <p tw="mt-6 text-xs text-gray-600 text-center">
                 <a href={forgotPasswordUrl} tw="border-b border-gray-500 border-dotted">
                   Forgot Password ?
                 </a>
-              </p>
+              </p> */}
               <p tw="mt-8 text-sm text-gray-600 text-center">
                 Dont have an account?{" "}
-                <a href={signupUrl} tw="border-b border-gray-500 border-dotted">
+                <a href="/signup_page" tw="border-b border-gray-500 border-dotted">
                   Sign Up
                 </a>
               </p>

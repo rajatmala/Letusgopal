@@ -41,7 +41,7 @@ export default ({
   const logoLink = (
     <LogoLink href="/">
       <img src={logoImageSrc} alt="Logo" />
-      Treact
+      Let's GoPal
     </LogoLink>
   );
   const navLinks = [

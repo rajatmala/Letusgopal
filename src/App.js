@@ -75,7 +75,7 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 // import GetStarted from "components/cta/GetStartedLight.js";
 // import DownloadApp from "components/cta/DownloadApp.js";
 
-import Footer from "components/footers/SimpleFiveColumn.js";
+// import Footer from "components/footers/SimpleFiveColumn.js";
 // import Footer from "components/footers/FiveColumnWithInputForm.js";
 // import Footer from "components/footers/FiveColumnWithBackground.js";
 // import Footer from "components/footers/FiveColumnDark.js";
@@ -130,7 +130,6 @@ export default function App() {
           <Route path="/blog_page" element={<BlogIndexPage />} />
         </Routes>
       </Router>
-      <Footer/>
     </>
   );
 }

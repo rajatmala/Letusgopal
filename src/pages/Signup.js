@@ -54,9 +54,9 @@ const IllustrationImage = styled.div`
 `;
 
 export default ({
-  logoLinkUrl = "#",
+  logoLinkUrl = "/",
   illustrationImageSrc = illustration,
-  headingText = "Sign Up For Treact",
+  headingText = "Sign Up For Let's GoPal",
   socialButtons = [
     {
       iconImageSrc: googleIconImageSrc,
@@ -85,7 +85,7 @@ export default ({
           <MainContent>
             <Heading>{headingText}</Heading>
             <FormContainer>
-              <SocialButtonsContainer>
+              {/* <SocialButtonsContainer>
                 {socialButtons.map((socialButton, index) => (
                   <SocialButton key={index} href={socialButton.url}>
                     <span className="iconContainer">
@@ -97,7 +97,7 @@ export default ({
               </SocialButtonsContainer>
               <DividerTextContainer>
                 <DividerText>Or Sign up with your e-mail</DividerText>
-              </DividerTextContainer>
+              </DividerTextContainer> */}
               <Form>
                 <Input type="email" placeholder="Email" />
                 <Input type="password" placeholder="Password" />
@@ -106,7 +106,7 @@ export default ({
                   <span className="text">{submitButtonText}</span>
                 </SubmitButton>
                 <p tw="mt-6 text-xs text-gray-600 text-center">
-                  I agree to abide by treact's{" "}
+                  I agree to abide by Let's GoPal's{" "}
                   <a href={tosUrl} tw="border-b border-gray-500 border-dotted">
                     Terms of Service
                   </a>{" "}
@@ -118,7 +118,7 @@ export default ({
 
                 <p tw="mt-8 text-sm text-gray-600 text-center">
                   Already have an account?{" "}
-                  <a href={signInUrl} tw="border-b border-gray-500 border-dotted">
+                  <a href="/login_page" tw="border-b border-gray-500 border-dotted">
                     Sign In
                   </a>
                 </p>
