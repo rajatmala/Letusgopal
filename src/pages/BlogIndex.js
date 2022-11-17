@@ -43,8 +43,23 @@ const CreationDate = tw.div`mt-4 uppercase text-gray-600 italic font-semibold te
 const Title = tw.div`mt-1 font-black text-2xl text-gray-900 group-hover:text-primary-500 transition duration-300`;
 const Description = tw.div``;
 
+
 const ButtonContainer = tw.div`flex justify-center`;
 const LoadMoreButton = tw(PrimaryButton)`mt-16 mx-auto`;
+
+const Location = tw.div``;
+const FormContainer = tw.div`w-full flex-1 mt-8`;
+const Form = tw.form`mx-auto max-w-xs`;
+const Input = tw.input`w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5 first:mt-0`;
+const SubmitButton = styled.button`
+  ${tw`mt-5 tracking-wide font-semibold bg-primary-500 text-gray-100 w-full py-4 rounded-lg hover:bg-primary-900 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none`}
+  .icon {
+    ${tw`w-6 h-6 -ml-2`}
+  }
+  .text {
+    ${tw`ml-3`}
+  }
+`;
 
 export default ({
   headingText = "Our Inventory",
@@ -55,10 +70,12 @@ export default ({
         "https://t3.ftcdn.net/jpg/04/61/05/50/360_F_461055011_7loYFoVN9ZnpZRCRJnoFgusfVMWacC4M.jpg",
       category: "Storage Unit",
       date: "April 21, 2020",
+      // location: 
       title: "Description about the warehouse",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      url: "https://timerse.com",
+      url: "#",
+      
       featured: true
     },
     getPlaceholderPost(),
@@ -94,19 +111,46 @@ export default ({
             <Heading>{headingText}</Heading>
           </HeadingRow>
           <Posts>
-            {posts.slice(0, visible).map((post, index) => (
-              <PostContainer key={index} featured={post.featured}>
-                <Post className="group" as="a" href={post.url}>
-                  <Image imageSrc={post.imageSrc} />
-                  <Info>
-                    <Category>{post.category}</Category>
-                    <CreationDate>{post.date}</CreationDate>
-                    <Title>{post.title}</Title>
-                    {post.featured && post.description && <Description>{post.description}</Description>}
-                  </Info>
-                </Post>
-              </PostContainer>
-            ))}
+            {posts.slice(0, visible).map((post, index) => {
+              if(index==0){
+                return (<PostContainer key={index} featured={post.featured}>
+                  <Post className="group" as="a" href={post.url}>
+                    <Image imageSrc={post.imageSrc} />
+                    <Info>
+                      <Category>{post.category}</Category>
+                      <CreationDate>{post.date}</CreationDate>
+                      <Title>{post.title}</Title>
+                      <FormContainer>
+                        <Form>
+                          <Input type="text" placeholder="City, State or Landmark" />
+                          <SubmitButton type="submit">
+                            {/* <SubmitButtonIcon className="icon" /> */}
+                            <span className="text">Find Unit</span>
+                          </SubmitButton>
+                        </Form>
+                      </FormContainer>
+                      {/* {post.featured && post.description && <Description>{post.description}</Description>} */}
+                    </Info>
+                  </Post>
+                </PostContainer>);
+              }else{
+                return (<PostContainer key={index} featured={post.featured}>
+                  <Post className="group" as="a" href={post.url}>
+                    <Image imageSrc={post.imageSrc} />
+                    <Info>
+                      <Category>{post.category}</Category>
+                      <CreationDate>{post.date}</CreationDate>
+                      <Title>{post.title}</Title>
+                      {post.featured && post.description && <Description>{post.description}</Description>}
+                      <SubmitButton type="submit">
+                            {/* <SubmitButtonIcon className="icon" /> */}
+                            <span className="text">View Details</span>
+                          </SubmitButton>
+                    </Info>
+                  </Post>
+                </PostContainer>); 
+              }
+            })}
           </Posts>
           {visible < posts.length && (
             <ButtonContainer>
