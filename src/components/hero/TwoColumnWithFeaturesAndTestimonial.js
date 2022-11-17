@@ -61,7 +61,7 @@ export default ({
       <NavLink href="/#">Testimonials</NavLink>
     </NavLinks>,
     <NavLinks key={2}>
-      <NavLink href="/#" tw="lg:ml-12!">
+      <NavLink href="/login" tw="lg:ml-12!">
         Login
       </NavLink>
       <PrimaryLink css={buttonRoundedCss} href="/#">
