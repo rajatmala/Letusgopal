@@ -93,10 +93,10 @@ import RestaurantLandingPage from "demos/RestaurantLandingPage.js";
 /* Inner Pages */
 import LoginPage from "pages/Login.js";
 import SignupPage from "pages/Signup.js";
-// import PricingPage from "pages/Pricing.js";
-// import AboutUsPage from "pages/AboutUs.js";
-// import ContactUsPage from "pages/ContactUs.js";
-// import BlogIndexPage from "pages/BlogIndex.js";
+import PricingPage from "pages/Pricing.js";
+import AboutUsPage from "pages/AboutUs.js";
+import ContactUsPage from "pages/ContactUs.js";
+import BlogIndexPage from "pages/BlogIndex.js";
 // import TermsOfServicePage from "pages/TermsOfService.js";
 // import PrivacyPolicyPage from "pages/PrivacyPolicy.js";
 
@@ -122,8 +122,12 @@ export default function App() {
           <Route path="/thank-you" element={<ThankYouPage />} /> */}
           <Route path="/" element={<RestaurantLandingPage />} />
 
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/login_page" element={<LoginPage />} />
+          <Route path="/signup_page" element={<SignupPage />} />
+          <Route path="/aboutus_page" element={<AboutUsPage />} />
+          <Route path="/contact_page" element={<ContactUsPage />} />
+          <Route path="/pricing_page" element={<PricingPage />} />
+          <Route path="/blog_page" element={<BlogIndexPage />} />
         </Routes>
       </Router>
       <Footer/>
