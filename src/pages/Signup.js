@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useState} from "react";
+import { useNavigate } from 'react-router-dom';
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import { Container as ContainerBase } from "components/misc/Layouts";
 import tw from "twin.macro";
@@ -74,8 +75,54 @@ export default ({
   tosUrl = "#",
   privacyPolicyUrl = "#",
   signInUrl = "#"
-}) => (
-  <AnimationRevealPage>
+}) => {
+
+  const history = useNavigate();
+
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    contactNumber: "",
+    password: "",
+    cpassword: ""
+  });
+
+  const handleChange = (e) => {
+    const {name, value} = e.target;
+    setUser({...user, [name]: value});
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let res = await fetch("/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name: user.name,
+        email: user.email,
+        contactNumber: user.contactNumber,
+        password: user.password,
+        cpassword: user.cpassword
+      })
+    });
+
+    res = res.json();
+    if (res.status === 422 || !res || res.status === 400 || res.status === 500) {
+      const err = res.error;
+      window.alert(err);
+      console.log(err);
+    } else {
+      const msg = res.message;
+      window.alert(msg);
+      console.log(msg);
+      history.push('/login_page');
+    }
+    console.log(user);
+  }
+
+  return (<AnimationRevealPage>
     <Container>
       <Content>
         <MainContainer>
@@ -99,10 +146,13 @@ export default ({
                 <DividerText>Or Sign up with your e-mail</DividerText>
               </DividerTextContainer> */}
               <Form>
-                <Input type="email" placeholder="Email" />
-                <Input type="password" placeholder="Password" />
-                <SubmitButton type="submit">
-                  <SubmitButtonIcon className="icon" />
+              <Input name="email" type="email" placeholder="Email" onChange={handleChange} value={user.email}/>
+                <Input name="name" type="text" placeholder="Name" onChange={handleChange} value={user.name}/>
+                <Input name="contactNumber" type="text" placeholder="Contact Number" onChange={handleChange} value={user.contactNumber}/>
+                <Input name="password" type="password" placeholder="Password" onChange={handleChange} value={user.password}/>
+                <Input name="cpassword" type="password" placeholder="Confirm Password" onChange={handleChange} value={user.cpassword}/>
+                <SubmitButton type="submit" onClick={handleSubmit} >
+                  <SubmitButtonIcon className="icon"/>
                   <span className="text">{submitButtonText}</span>
                 </SubmitButton>
                 <p tw="mt-6 text-xs text-gray-600 text-center">
@@ -131,5 +181,6 @@ export default ({
         </IllustrationContainer>
       </Content>
     </Container>
-  </AnimationRevealPage>
-);
+  </AnimationRevealPage>);
+
+};
