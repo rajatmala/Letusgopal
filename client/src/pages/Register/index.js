@@ -1,8 +1,50 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Register = () =>
 {
+
+    const [user,setUser] = useState({
+        name: "",
+        email: "",
+        password: "",
+        cpassword: "",
+    });
+
+    const handleChange = (e) => {
+        setUser({...user, [e.target.name]:e.target.value});
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const regUser = {
+            name: user.name,
+            email: user.email,
+            password: user.password,
+            cpassword: user.cpassword
+        }
+
+        // axios.get('/reg').then((data)=>{
+        //     console.log(data.data);
+        // }).catch((err)=>{
+        //     console.log(err);
+        // });
+        
+        axios({url:'/registerUser', data:regUser, method:'post'}).then((data)=>{
+            console.log(data.data);
+        }).catch((err)=>{
+            console.log(err);
+        });
+
+        setUser({
+            name: "",
+            email: "",
+            password: "",
+            cpassword: ""
+        });
+    }
+
     return (
         <>
             <div
@@ -50,7 +92,9 @@ const Register = () =>
                                     <form>
                                         <div className="form-group">
                                             <input
+                                                onChange={handleChange}
                                                 type="text"
+                                                name="name"
                                                 className="form-control border-0 p-4"
                                                 placeholder="Your name"
                                                 required="required"
@@ -58,7 +102,9 @@ const Register = () =>
                                         </div>
                                         <div className="form-group">
                                             <input
+                                                onChange={handleChange}
                                                 type="email"
+                                                name="email"
                                                 className="form-control border-0 p-4"
                                                 placeholder="Your Email"
                                                 required="required"
@@ -66,14 +112,8 @@ const Register = () =>
                                         </div>
                                         <div className="form-group">
                                             <input
-                                                type="text"
-                                                className="form-control border-0 p-4"
-                                                placeholder="Your Username"
-                                                required="required"
-                                            />
-                                        </div>
-                                        <div className="form-group">
-                                            <input
+                                                onChange={handleChange}
+                                                name="password"
                                                 type="password"
                                                 className="form-control border-0 p-4"
                                                 placeholder="Your Password"
@@ -81,6 +121,16 @@ const Register = () =>
                                             />
                                         </div>
                                         <div className="form-group">
+                                            <input
+                                                onChange={handleChange}
+                                                name="cpassword"
+                                                type="password"
+                                                className="form-control border-0 p-4"
+                                                placeholder="Confirm Password"
+                                                required="required"
+                                            />
+                                        </div>
+                                        {/* <div className="form-group">
                                             <select
                                                 className="custom-select border-0 px-4"
                                                 style={ { height: 47 } }
@@ -90,9 +140,10 @@ const Register = () =>
                                                 <option value={ 2 }>Gujarat</option>
                                                 <option value={ 3 }>Maharashtra</option>
                                             </select>
-                                        </div>
+                                        </div> */}
                                         <div className="text-right">
                                             <button
+                                                onClick={handleSubmit}
                                                 className="btn btn-dark btn-block border-0 py-3 mb-3"
                                                 type="submit"
                                             >

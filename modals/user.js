@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 require("dotenv").config({ path: "../server/config/config.env" });
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 
 // Create Schema
 const UserSchema = new Schema({
@@ -24,10 +25,6 @@ const UserSchema = new Schema({
         required: true
     },
     cpassword: {
-        type: String,
-        required: true
-    },
-    contactNumber: {
         type: String,
         required: true
     },

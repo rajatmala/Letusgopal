@@ -1,8 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import axios from "axios"
 const LoginSection = () =>
 {
+    const handelSubmit = (e) =>{
+        e.preventDefault();
+        axios.post("/loginUser").then((data) =>{
+            console.log(data.data);
+        })
+    }
     return (
         <>
             <div
@@ -65,7 +71,7 @@ const LoginSection = () =>
                                             />
                                         </div>
                                         <div className="text-right">
-                                            <button
+                                            <button onClick={handelSubmit}
                                                 className="btn btn-dark btn-block border-0 py-3 mb-3"
                                                 type="submit"
                                             >
