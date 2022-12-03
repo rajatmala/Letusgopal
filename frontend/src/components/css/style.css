@@ -5,7 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Mrs+Sheppards&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Mrs+Sheppards&family=Satisfy&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Sono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@800&family=Sono&display=swap');
 
 :root {
   --blue: #007bff;
@@ -76,6 +76,12 @@ body {
   text-align: left;
   background-color: #fff;
 }
+
+.logo {
+  margin-right: 10px;
+}
+
+
 
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important;
@@ -2718,11 +2724,27 @@ fieldset:disabled a.btn {
   pointer-events: none;
 }
 
+.btn-blue {
+  color: rgb(0, 0, 0);
+  background-color: var(--blue) !important;
+}
+
+.bg-blue{
+  color: rgb(0, 0, 0);
+    background-color: var(--blue) !important;
+}
+
+.btn-blue:hover {
+  color: #fff;
+  background-color: var(--blue);
+}
+
 .btn-primary {
   color: #fff;
   background-color: #FF6600;
   border-color: #FF6600;
 }
+
 
 .btn-primary:hover {
   color: #fff;
@@ -4786,6 +4808,10 @@ input[type="button"].btn-block {
   }
 
   .navbar-expand-lg .navbar-toggler {
+    display: none;
+  }
+
+  .logo-sm {
     display: none;
   }
 }
@@ -10709,8 +10735,18 @@ button.bg-dark:focus {
   color: #FF6600 !important;
 }
 
-.text-violate {
-  color: var(--purple);
+.text-orange{
+  color: #FF6600 !important;
+}  
+  .text-yellow {
+  color: #FFC601 !important;
+  font-family: "Manrope";
+}
+
+.text-purple {
+  color: var(--purple) !important;
+  font-family: "Manrope";
+  font-weight: bolder;
 }
 
 a.text-primary:hover,
@@ -10729,6 +10765,7 @@ a.text-secondary:focus {
 
 .text-success {
   color: #28a745 !important;
+  font-family: "Manrope";
 }
 
 a.text-success:hover,
