@@ -3,13 +3,23 @@ import { Link } from "react-router-dom";
 import
 {
     Col,
-    Button
+    Button,
+    ProgressBar
 } from "react-bootstrap";
 import { FcClock, FcRating, FcGlobe, FcCamcorderPro, FcRuler } from "react-icons/fc";
 import "./StorageCard.css"
 
 const StorageCard = () =>
 {
+    function WarehouseArea(area)
+    {
+        return (
+            <ProgressBar className="mt-2">
+                <ProgressBar now={ area } label={ `Booked Area ${ area }%` } variant="success" striped key={ 1 } />
+                <ProgressBar variant="dark" now={ 100 - area } label={ `Remain Area ${ 100 - area }%` } key={ 2 } />
+            </ProgressBar >
+        );
+    }
     return (
         <>
             <Col lg={ 3 } md={ 6 } sm={ 6 } xs={ 12 } className="cardHover">
@@ -41,6 +51,7 @@ const StorageCard = () =>
                                 4.5
                                 <p className="m-0 float-right">{ 9000 } ₹</p>
                             </h6>
+                            { WarehouseArea(60) }
                         </div>
                         <div className="border-top pt-2">
                             <div className="d-grid gap-1">

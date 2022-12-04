@@ -5,11 +5,10 @@ import
     Row,
     Col,
     Table,
-    Button
 } from "react-bootstrap";
 // import { BsFillCartPlusFill, BsFillBookmarksFill } from "react-icons/bs";
+// import { Link } from 'react-router-dom';
 import "./WarehouseDetails.css";
-import { Link } from 'react-router-dom';
 import { SeatingChart } from 'react-seat-charts';
 
 
