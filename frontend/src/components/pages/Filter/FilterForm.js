@@ -29,7 +29,7 @@ const FilterForm = () =>
                                 <Form.Check
                                     id="r1"
                                     className="radioX"
-                                    label="Distance"
+                                    label="Size"
                                     name="shortResult"
                                     type="radio"
                                 />
@@ -40,6 +40,14 @@ const FilterForm = () =>
                                     name="shortResult"
                                     type="radio"
                                 />
+                                <Form.Check
+                                    id="r3"
+                                    className="radioX"
+                                    label="Distance"
+                                    name="shortResult"
+                                    type="radio"
+                                />
+                                
                             </Form.Group>
                             <hr />
                             <Form.Group
@@ -87,14 +95,14 @@ const FilterForm = () =>
                                     <b>Book Type</b>
                                 </Form.Label>
                                 <Form.Check
-                                    id="r3"
+                                    id="r4"
                                     className="radioX"
                                     label="Rent Now"
                                     name="CheckIN"
                                     type="radio"
                                 />
                                 <Form.Check
-                                    id="r4"
+                                    id="r5"
                                     className="radioX"
                                     label="Reserve"
                                     name="CheckIN"

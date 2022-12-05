@@ -121,7 +121,7 @@ const HeaderSection = () =>
                     Home
                   </Link>
                   <Link to="/partner" className="nav-item nav-link">
-                    Become a Partner
+                    List Your Space
                   </Link>
                   <Link to="/locations" className="nav-item nav-link">
                     Track & Trace

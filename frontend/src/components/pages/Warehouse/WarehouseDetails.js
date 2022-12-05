@@ -16,7 +16,8 @@ import { FcOk, FcPicture } from "react-icons/fc";
 import RatingBar from "./RattingBar";
 import { Link } from 'react-router-dom';
 import "./WarehouseDetails.css";
-import WarehouseDetailsX from "./WarehouseDetailsX"
+import WarehouseDetailsX from "./WarehouseDetailsX";
+import UnitSection from "./UnitSection.js";
 import ReviewSection from "./ReviewSection";
 
 const WarehouseDetails = () =>
@@ -24,7 +25,6 @@ const WarehouseDetails = () =>
     const [ show, setShow ] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
     return (<>
         <Modal
             show={ show }
@@ -47,7 +47,7 @@ const WarehouseDetails = () =>
         </Modal>
         <Container>
             <Form>
-                <Card className="my-5 cardX">
+                <Card className="mt-5 cardX">
                     <Card.Header className='shadow p-3 bg-white rounded'>
                         <Row>
                             <Col md={ 6 } className="text-center d-flex flex-column">
@@ -56,8 +56,8 @@ const WarehouseDetails = () =>
                                 <p><u>6 review</u></p>
                             </Col>
                             <Col md={ 6 } className="text-center d-flex flex-column">
-                                <p>53000 sq/ft Area</p>
-                                <p>4000 cu/mi Volume</p>
+                                <p>200 sq ft Area</p>
+                                <p>1200 cu ft Volume</p>
                                 <h4>
                                     <RatingBar />
                                 </h4>
@@ -132,7 +132,7 @@ const WarehouseDetails = () =>
 
                 <Card className="shadow p-3 bg-white rounded">
                     <Card.Body>
-                        <Row className='my-5'>
+                        <Row className='my-2'>
                             <Col md={ 12 }>
                                 <h2 className='text-warning mb-5'>Features Available at this Facility :</h2>
                             </Col>
@@ -167,56 +167,32 @@ const WarehouseDetails = () =>
                     </Card.Body>
                 </Card>
 
-                <Card className='my-5'>
-                    <Row>
-                        <Col md={ 12 } xs={ 12 }>
-                            <div className="jumbotron text-center  text-white shadow p-3 mb-5 bg-dark rounded">
-                                <h2 className="text-white-50">Available Units</h2>
-                                <hr className="" />
-                                <p className="lead">
-                                    <Row>
-                                        <Col md={ 12 }><u className='bg-warning text-dark text-black-50'> Sort & Filter</u></Col>
-                                    </Row>
-                                    <Row className='my-3'>
-                                        <Col md={ 4 }>
-                                            <Form.Label>Unit Size:</Form.Label>
-                                            <Form.Select size="sm">
-                                                <option>All Sizes</option>
-                                                <option>Small</option>
-                                                <option>Medium</option>
-                                                <option>Large</option>
-                                                <option>Other</option>
-                                            </Form.Select>
-                                        </Col>
-                                        <Col md={ 4 }>
-                                            <Form.Label>Select Unit Type:</Form.Label>
-                                            <Form.Select size="sm">
-                                                <option>Split Level Storage</option>
-                                                <option>Storage Locker</option>
-                                                <option>Portable Storage Container</option>
-                                            </Form.Select>
-                                        </Col>
-                                        <Col md={ 4 }>
-                                            <Form.Label>Select Unit Majors:</Form.Label>
-                                            <Form.Select size="sm">
-                                                <option>Square feet(sq ft)</option>
-                                                <option>Square meter(sq m)</option>
-                                                <option>Square yard</option>
-                                                <option>Acre</option>
-                                                <option>Hectare</option>
-                                            </Form.Select>
-                                        </Col>
-                                    </Row>
-                                </p>
-                            </div>
-                        </Col>
-                        <Col md={ 12 } xs={ 12 }>
-                            <WarehouseDetailsX />
-                        </Col>
-                    </Row>
-                </Card>
+                <Row className='mt-5'>
+                    <Col md={ 12 } xs={ 12 }>
+                        <div className="jumbotron text-center text-dark">
+                            <h2 className="text-dark-50">Available Units<span className='mx-3 h6 text-dark'>(All Sizes are approximate)</span></h2>
+                            <hr className="" />
+                            <p className="lead">
+                                <Row>
+                                    <Col md={ 12 }><u className='text-dark text-black-50'> Sort & Filter</u></Col>
+                                </Row>
+                                <Row className='my-3'>
+                                    <Col md={ 6 }>
+                                        <Form.Label>Select Unit Type:</Form.Label>
+                                        <Form.Select size="sm">
+                                            <option>Split Level Storage</option>
+                                            <option>Storage Locker</option>
+                                        </Form.Select>
+                                    </Col>
+                                </Row>
+                            </p>
+                        </div>
+                        <UnitSection />
+                        <UnitSection />
+                    </Col>
+                </Row>
 
-                <Card className='bg-light text-dark my-5'>
+                <Card className='bg-light text-dark mb-5'>
                     <Card.Body>
                         <Row className='my-5'>
                             <Col

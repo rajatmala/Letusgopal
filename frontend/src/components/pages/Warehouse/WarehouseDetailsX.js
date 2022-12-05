@@ -37,13 +37,13 @@ const WarehouseDetailsX = () =>
         </td>
     );
 
-
     return (
         <>
             <Container className='text-center'>
                 <Row>
                     <Col md={ 12 }>
-                        <h2>Select your Units</h2>
+                        <h2 className='float-left'>Select your Units</h2>
+                        <h2 className='float-right text-warning'>{ 12000 }₹</h2>
                         <Table bordered="2" responsive size="sm" className="grid">
                             <tr>
                                 { listItems }

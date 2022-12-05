@@ -49,12 +49,12 @@ const YourOrdersCard = ({ muted }) =>
                             <div className="pt-2">
                                 <div className="d-grid gap-1">
                                     <Link to="/live" style={ { textDecoration: "none" } }
-                                        onClick={ e => muted ? '' : e.preventDefault() }
+                                        onClick={ e => muted ?  e.preventDefault():'' }
                                     ><Button
                                         className="btn btn-block btn-outline-dark text-white" variant="blue" size="md" block disabled={ muted ? true : false }>Live Footage</Button></Link>
                                 </div>
                                 <div className="d-grid gap-1 my-2">
-                                    <Link to="/WarehouseDetails" style={ { textDecoration: "none" } }><Button
+                                    <Link to="/warehouse" style={ { textDecoration: "none" } }><Button
                                         className="btn btn-block btn-outline-dark text-white" variant="success" size="md" block>Book Again</Button></Link>
                                 </div>
                             </div>
