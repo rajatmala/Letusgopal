@@ -30,7 +30,7 @@ const LoginSection = () => {
       .catch((err) => {
         console.log(err);
       });
-    await navigate("/profile");
+    navigate("/profile");
   };
 
   return (

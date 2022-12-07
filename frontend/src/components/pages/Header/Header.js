@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Cart.css";
 
 import Context from "../../../Contexts/context";
@@ -12,6 +12,15 @@ const styles = {
 
 const HeaderSection = () =>
 {
+
+  const usertoken = localStorage.getItem("token");
+  const navigate = useNavigate();
+
+  const handleLogout = (e) => {
+    localStorage.removeItem('token');
+    navigate("/");
+  }
+
   return (
     <div className="shadow-sm bg-white rounded">
       <div className="container-fluid d-none d-lg-block">
@@ -130,13 +139,13 @@ const HeaderSection = () =>
                     Contact
                   </Link>
                 </div>
-
+                {usertoken!=null ? <button className="btn btn-dark text-white py-2 px-4 ml-auto d-none d-lg-block" onClick={handleLogout}>Logout</button>:
                 <Link
                   className="btn btn-dark text-white py-2 px-4 ml-auto d-none d-lg-block"
                   to="/login"
                 >
                   SignIn/Orders
-                </Link>
+                </Link>}
                 <Link
                   to="/cart"
                   className="nav-item nav-link cart position-relative d-inline-flex"
