@@ -5,6 +5,7 @@ import
     Container,
     Row,
 } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 
 const CardSection = () =>
@@ -13,7 +14,6 @@ const CardSection = () =>
         <>
             <Container fluid>
                 <Row>
-                    <StorageCard />
                     <StorageCard />
                     <StorageCard />
                     <StorageCard />

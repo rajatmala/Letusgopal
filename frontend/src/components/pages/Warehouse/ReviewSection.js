@@ -13,15 +13,6 @@ const ReviewSection = () =>
             <Container>
                 <Row>
                     <Col lg={ 12 } md={ 12 } sm={ 12 } xs={ 12 }>
-                        <div className="jumbotron bg-dark text-white-50">
-                            <h5 className="text-white"><RatingBar /> &nbsp; { ratingTotal }</h5>
-                            <p>
-                                { reviewDescription }
-                            </p>
-                            <hr className="" />
-                            <h5 className="float-right text-white">{ reviewDate.toUTCString() }</h5>
-                            <h5 className="text-warning">{ reviewerName }</h5>
-                        </div>
                         <div className="jumbotron">
                             <h5><RatingBar /> &nbsp; { ratingTotal }</h5>
                             <p>
@@ -29,7 +20,16 @@ const ReviewSection = () =>
                             </p>
                             <hr className="" />
                             <h5 className="float-right">{ reviewDate.toUTCString() }</h5>
-                            <h5 className="text-warning">{ reviewerName }</h5>
+                            <h5 className="text-primary">{ reviewerName }</h5>
+                        </div> 
+                        <div className="jumbotron">
+                            <h5><RatingBar /> &nbsp; { ratingTotal }</h5>
+                            <p>
+                                { reviewDescription }
+                            </p>
+                            <hr className="" />
+                            <h5 className="float-right">{ reviewDate.toUTCString() }</h5>
+                            <h5 className="text-primary">{ reviewerName }</h5>
                         </div>
                     </Col>
                 </Row>
