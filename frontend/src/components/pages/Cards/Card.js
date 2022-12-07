@@ -18,7 +18,6 @@ const CardSection = () =>
                     <StorageCard />
                     <StorageCard />
                     <StorageCard />
-                    <StorageCard />
                 </Row>
             </Container>
 
