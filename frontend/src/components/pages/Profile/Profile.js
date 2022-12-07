@@ -1,13 +1,41 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button } from "react-bootstrap";
 import "./profile.css";
+import { useNavigate } from 'react-router-dom';
 import UserDetails from "./UserDetails";
 import YourOrders from "./YourOrders";
+import axios from "axios";
 
 const Profile = () =>
 {
-    const [ toggle, setToggle ] = useState(1);
+    
+    const navigate = useNavigate();
+    const [user, setUser] = useState(null);
+    const fetchData = async (usertoken) => {
+    try {
+        const res = await axios.get("/getAllUsers", {
+            headers: { "x-auth-token": usertoken },
+        });
+        console.log(res.data);
+        setUser(res.data);
+    } catch (err) {
+        console.log("Error in fetching data" + err);
+    }
+    };
 
+    useEffect(() => {
+        const usertoken = localStorage.getItem("token");
+        // console.log(usertoken);
+    
+        if (!usertoken) {
+          navigate("/login");
+        } else {
+            fetchData(usertoken);
+        }
+      }, []);
+    
+
+    const [ toggle, setToggle ] = useState(1);
     return (
         <>
             <section style={ { backgroundColor: "#eee" } }>
@@ -22,7 +50,7 @@ const Profile = () =>
                                         className="rounded-circle img-fluid"
                                         style={ { width: 150 } }
                                     />
-                                    <h5 className="my-3">Urmil Patel</h5>
+                                    <h5 className="my-3">{user.name}</h5>
                                     <p className="text-muted mb-1">Full Stack Developer</p>
                                     <p className="text-muted mb-4">Ahmadabad Gujarat</p>
                                     <div className="d-flex justify-content-center mb-2">

@@ -15,22 +15,22 @@ const LoginSection = () => {
     setUserDetails({ ...userDetails, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const logUser = {
       email: userDetails.email,
       password: userDetails.password,
     };
 
-    axios({ url: "/loginUser", data: logUser, method: "post" })
+    await axios({ url: "/loginUser", data: logUser, method: "post" })
       .then((data) => {
         console.log(data.data);
         localStorage.setItem("token", data.data);
-        navigate("/");
       })
       .catch((err) => {
         console.log(err);
       });
+    await navigate("/profile");
   };
 
   return (
