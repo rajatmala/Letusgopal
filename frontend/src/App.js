@@ -20,7 +20,7 @@ import AllImageSection from "./components/pages/Warehouse/AllImageSection";
 import Underconstruction from "./components/pages/Underconstruction/Underconstruction";
 import Profile from "./components/pages/Profile/Profile";
 import { Routes, Route } from "react-router-dom";
-import "./components/css/Style.css";
+import "./components/css/style.css";
 import "./Contexts/context";
 
 const App = () =>

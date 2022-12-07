@@ -17,12 +17,13 @@ app.use(
   );
 
 app.use(bodyParser.json());
-app.use("/",router);
+
+app.use("/", require("./router/routes.js"));
 
 
-app.get("/", (req, res) => {
-  res.send("Hi");
-});
+// app.get("/", (req, res) => {
+//   res.send("Hi");
+// });
 
 app.use(cors({
   origin: "http://localhost:3000",
