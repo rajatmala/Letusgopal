@@ -9,6 +9,8 @@ router.post("/register", userController.register);
 
 router.post("/loginUser", userController.login);
 
+router.get("/getAllUsers", authentication, userController.getAllUsers);
+
 // router.delete("/delete/:id", authentication, userController.deleteUser);
 
 // router.post("/tokenIsValid", userController.userTokenvalid);

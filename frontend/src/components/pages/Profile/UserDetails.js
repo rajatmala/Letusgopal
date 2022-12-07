@@ -1,7 +1,8 @@
 import React from 'react'
 
-const UserDetails = () =>
+const UserDetails = (props) =>
 {
+    console.log(props)
     return (
         <div>
             <div className="row">
@@ -9,7 +10,8 @@ const UserDetails = () =>
                     <p className="mb-0">Full Name</p>
                 </div>
                 <div className="col-sm-9">
-                    <p className="text-muted mb-0">Shree venkata</p>
+                    {props.userDetails.name==null ? <p>--</p>:
+                    <p className="text-muted mb-0">{props.userDetails.name}</p>}
                 </div>
             </div>
             <hr />
@@ -18,7 +20,8 @@ const UserDetails = () =>
                     <p className="mb-0">Email</p>
                 </div>
                 <div className="col-sm-9">
-                    <p className="text-muted mb-0">example@example.com</p>
+                {props.userDetails.email==null ? <p>--</p>:
+                    <p className="text-muted mb-0">{props.userDetails.email}</p>}
                 </div>
             </div>
             <hr />
@@ -27,7 +30,8 @@ const UserDetails = () =>
                     <p className="mb-0">Phone</p>
                 </div>
                 <div className="col-sm-9">
-                    <p className="text-muted mb-0">(097) 234-5678</p>
+                {props.userDetails.phone==null ? <p>--</p>:
+                    <p className="text-muted mb-0">{props.userDetails.phone}</p>}
                 </div>
             </div>
             <hr />
@@ -36,7 +40,8 @@ const UserDetails = () =>
                     <p className="mb-0">Mobile</p>
                 </div>
                 <div className="col-sm-9">
-                    <p className="text-muted mb-0">(098) 765-4321</p>
+                {props.userDetails.mobile==null ? <p>--</p>:
+                    <p className="text-muted mb-0">{props.userDetails.mobile}</p>}
                 </div>
             </div>
             <hr />

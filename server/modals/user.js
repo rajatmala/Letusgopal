@@ -20,7 +20,17 @@ const UserSchema = new Schema({
         required: true,
         unique: true
     },
-    password: {
+    contactNumberMobile: {
+        type: Number,
+        required: true
+    },
+    contactNumberPhone: {
+        type: Number,
+        required: true
+    },
+    Address: {
+        type: String,
+    },password: {
         type: String,
         required: true
     },
