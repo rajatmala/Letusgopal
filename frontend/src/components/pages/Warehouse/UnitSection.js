@@ -15,16 +15,16 @@ const UnitSection = () =>
                                 <img className="img-fluid" src="/images/s6.jpg" alt="" />
                             </div>
                         </Col>
-                        <Col md={ 6} className="">
+                        <Col md={ 6 } className="">
                             <div className="pt-2">
                                 <div className="d-grid gap-1 my-2">
-                                    <h3 className="mt-5 text-dark">
+                                    <h1 className="mt-5 text-dark">
                                         10' x 10' x 6'
-                                    </h3>
+                                    </h1>
                                 </div>
                             </div>
                         </Col>
-                        
+
                         <Col md={ 3 }>
                             <div className="pt-2">
                                 <div className="d-grid gap-1 my-3">
@@ -36,7 +36,7 @@ const UnitSection = () =>
                                         } size="md" block
                                         onClick={ () =>
                                         {
-                                            if (selectUnit === 0){
+                                            if (selectUnit === 0) {
                                                 setSelectUnit(1);
                                             }
                                             else {

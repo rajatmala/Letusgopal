@@ -7,8 +7,8 @@ const RatingBar = () =>
     return (
         <>
             <Rating placeholderRating={ 3.5 }
-                placeholderSymbol={ <BsStarFill /> }
-                fractions={ 2 } defaultValue={ 5 } emptySymbol={ <BsStar /> } fullSymbol={ <BsStarFill /> } />
+                placeholderSymbol={ <BsStarFill className='text-warning' /> }
+                fractions={ 2 } defaultValue={ 5 } emptySymbol={ <BsStar className='text-warning' /> } fullSymbol={ <BsStarFill className='text-warning' /> } />
         </>
     );
 };
