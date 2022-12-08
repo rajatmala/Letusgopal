@@ -1,17 +1,9 @@
-const express = require("express");
+const User = require("../modals/user");
 const jwt = require("jsonwebtoken");
-const router = express.Router();
 const bcrypt = require("bcryptjs");
-let User = require("../modals/user");
 require("dotenv").config({path: "../config/config.env"});
 
-//NOTE  Registration route
-// router.get("./reg")
-// router.get('/reg', async (req,res)=>{
-//     return res.json({data:"Hi again"});
-// });
-
-router.post("/registerUser", async (req, res) => {
+const register = async (req, res) => {
   // res.send("Hi again");
   console.log(req.body);
   const { name, email, password, cpassword } = req.body;
@@ -46,19 +38,13 @@ router.post("/registerUser", async (req, res) => {
             .catch((err) => console.log(err));
         });
       });
-    //   if (userRegistered) {
-    //     res.status(201).json({ message: "User registered successfully" });
-    //   } else {
-    //     res.status(500).json({ error: "Failed to register" });
-    //   }
     }
   } catch (err) {
     console.log(err);
   }
-});
+};
 
-// Login Router
-router.post("/loginUser", async (req, res) => {
+const login = async (req, res) => {
   try {
     let token;
     const { email, password } = req.body;
@@ -77,7 +63,7 @@ router.post("/loginUser", async (req, res) => {
         res.status(400).json({ error: "Invalid credentials" });
       } else {
         const token = jwt.sign(
-          { id: userData._id, user: userData.user, email: userData.email },
+          { id: userLogin._id, email: userLogin.email },
           process.env.ACCESS_TOKEN_SECRET
         );
         return res.json(token).status(200);
@@ -88,18 +74,18 @@ router.post("/loginUser", async (req, res) => {
   } catch (err) {
     console.log(err);
   }
-});
+};
 
-// Username validation Router
-// registrationRoutes.route("/validete")
-//     .post(function(req, res) {
-//         Registration.findOne({ user_name: req.body.user_name })
-//             .then(user => user ? res.sendStatus(204) : res.sendStatus(200))
-//     });
+const getAllUsers = async (req, res) => {
+  // console.log(req.user);
+  return res.json(req.user);
+}
 
-// // Get allData
-// registrationRoutes.route("/data").get(function(req, res) {
-//     Registration.find((err, data) => err ? res.status(400).send("Error occured") : res.json(data));
-// });
-
-module.exports = router;
+module.exports = {
+  // getAllUser,
+  register,
+  login,
+  getAllUsers
+  // deleteUser,
+  // userTokenvalid,
+};

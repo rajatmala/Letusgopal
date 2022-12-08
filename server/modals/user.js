@@ -20,7 +20,17 @@ const UserSchema = new Schema({
         required: true,
         unique: true
     },
-    password: {
+    contactNumberMobile: {
+        type: Number,
+        required: true
+    },
+    contactNumberPhone: {
+        type: Number,
+        required: true
+    },
+    Address: {
+        type: String,
+    },password: {
         type: String,
         required: true
     },
@@ -37,24 +47,24 @@ const UserSchema = new Schema({
     ]
 });
 
-UserSchema.pre('save', async function(next){
-    if(this.isModified('password')){
-        this.password = bcrypt.hash(this.password,12);
-        this.cpassword = bcrypt.hash(this.cpassword,12);
-    }
-    next();
-});
+// UserSchema.pre('save', async function(next){
+//     if(this.isModified('password')){
+//         this.password = bcrypt.hash(this.password,12);
+//         this.cpassword = bcrypt.hash(this.cpassword,12);
+//     }
+//     next();
+// });
 
-UserSchema.methods.generateAuthToken = async function(){
-    try{
-        let token = jwt.sign({_id: this.user_id},process.env.SECRET_KEY);
-        this.tokens = ths.tokens.concat({token: token});
-        await this.save();
-        return token;
-    }catch(err){
-        console.log(err);
-    }
-}
+// UserSchema.methods.generateAuthToken = async function(){
+//     try{
+//         let token = jwt.sign({_id: this.user_id},process.env.SECRET_KEY);
+//         this.tokens = ths.tokens.concat({token: token});
+//         await this.save();
+//         return token;
+//     }catch(err){
+//         console.log(err);
+//     }
+// }
 
 User = mongoose.model('users', UserSchema);
 module.exports = User;
