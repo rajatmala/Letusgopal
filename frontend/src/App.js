@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from "./components/pages/Header/Header.js";
-import MainPage from "./components/pages/Home/Home";
+import MainPage from "./components/Home";
 import Register from "./components/pages/Register/Register.js"
 import Login from "./components/pages/Login/Login.js";
 import StorageTab from "./components/pages/Home/StorageTab.js";
@@ -18,9 +18,10 @@ import YourOrders from "./components/pages/Profile/YourOrders";
 import Live from "./components/live.js";
 import AllImageSection from "./components/pages/Warehouse/AllImageSection";
 import Underconstruction from "./components/pages/Underconstruction/Underconstruction";
+import CheckoutSection from "./components/Checkout";
 import Profile from "./components/pages/Profile/Profile";
 import { Routes, Route } from "react-router-dom";
-import "./components/css/style.css";
+import "./components/css/Style.css";
 import "./Contexts/context";
 
 const App = () =>
@@ -46,6 +47,7 @@ const App = () =>
         <Route path="/allImages" element={ <AllImageSection /> } />
         <Route path="/live" element={ <Live /> } />
         <Route path="/underConstruction" element={ <Underconstruction /> } />
+        <Route path="/checkout" element={ <CheckoutSection /> } />
         <Route path="/test" element={ <Test /> } />
       </Routes>
       <Footer />

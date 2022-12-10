@@ -18,16 +18,18 @@ import MapX from "./pages/Map/Map";
 import CardSection from "./pages/Cards/Card";
 // import FilterForm from "./pages/Filter/FilterForm.js";
 import { FcSearch } from "react-icons/fc";
+import { BsFillGridFill } from "react-icons/bs";
+import { FaMap, FaFilter } from "react-icons/fa";
 const Storage = (props) =>
 {
 	// DefaultDAta For Life
 	const defaultData = {
-		sortBy: "size",
+		sortBy: "",
 		cctv: false,
 		indoor: false,
 		outdoor: false,
 		climate: false,
-		bookType: "rentnow",
+		bookType: "",
 	};
 
 
@@ -55,7 +57,8 @@ const Storage = (props) =>
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
 
-	const [ closeButton, setCloseButton ] = useState(true);
+	const [ closeButton, setCloseButton ] = useState(false);
+	const closeFilter = () => setCloseButton(true);
 
 	const onSave = () =>
 	{
@@ -81,14 +84,37 @@ const Storage = (props) =>
 		items.push(number);
 	}
 
+	const warehouseInfo = [
+		{ image: "/images/s1.jpg", name: "Shree", location: "surat", facility: "CCTV monitoring", size: "10' x 20' x 6'", rating: "3.5", price: "150", percentage: "33", area: "50", totalArea: "200" },
+		{ image: "/images/s5.jpg", name: "Surya", location: "delhi", facility: "Climate Control", size: "30' x 20' x 6'", rating: "4.7", price: "200", percentage: "20", area: "200", totalArea: "600" },
+		{ image: "/images/s6.jpg", name: "Shreelakshmi", location: "Nagpur", facility: "Indoor Storage", size: "15' x 20' x 5'", rating: "4.5", price: "170", percentage: "33", area: "50", totalArea: "300" },
+		{ image: "/images/s4.jpg", name: "Shreelakshmi", location: "Nagpur", facility: "Indoor Storage", size: "15' x 20' x 5'", rating: "4.5", price: "170", percentage: "33", area: "50", totalArea: "300" },
+	];
+
+	// searchbar
+	const [ searchInput, setSearchInput ] = useState("");
+
+	const handleChange = (e) =>
+	{
+		e.preventDefault();
+		setSearchInput(e.target.value);
+	};
+
+	if (searchInput.length > 0) {
+		warehouseInfo.filter((warehouse) =>
+		{
+			console.log(warehouse.name);
+			return warehouse.name.match(searchInput);
+		});
+	}
 	return (<>
 		<Offcanvas show={ show } onHide={ handleClose }>
 			<Offcanvas.Header closeButton>
-				<Offcanvas.Title>Filters</Offcanvas.Title>
+				<Offcanvas.Title><b>Filter & Sort Locations </b></Offcanvas.Title>
 			</Offcanvas.Header>
 			<Offcanvas.Body>
 				<Card>
-					<Card.Header className="text-center text-white bg-dark">
+					<Card.Header className="text-center text-white bg-blue">
 						<b>Filter & Sort Locations </b>
 					</Card.Header>
 					<Card.Body className="cardStorageBody">
@@ -233,8 +259,9 @@ const Storage = (props) =>
 							<Button variant="primary"
 								className="my-3 text-light btn-block"
 								onClick={ handleShow }>
+								<FaFilter className="text-white mx-1" />
 								Filters
-								<Badge bg="dark" pill className="ml-1">{ 3 }</Badge>
+								<Badge bg="light" pill className="mx-1 text-dark">{ 3 }</Badge>
 							</Button>
 						</Col>
 						<Col md={ 2 }>
@@ -246,6 +273,7 @@ const Storage = (props) =>
 									setToggle(1);
 								} }
 							>
+								<FaMap className="mx-1" />
 								Map
 							</Button>
 						</Col>
@@ -258,7 +286,8 @@ const Storage = (props) =>
 									setToggle(0);
 								} }
 							>
-								List
+								<BsFillGridFill className="mx-1" />
+								GridView
 							</Button>
 						</Col>
 						<Col md={ 6 }>
@@ -268,7 +297,8 @@ const Storage = (props) =>
 									placeholder="Search"
 									className="me-2 rounded-5"
 									aria-label="Search"
-									value={ props.sendText }
+									onChange={ handleChange }
+									value={ searchInput }
 								/>
 								<Button variant="secondary" className="text-white"><FcSearch /></Button>
 							</Form>
@@ -276,15 +306,15 @@ const Storage = (props) =>
 						<Col md={ 6 }>
 							<ListGroup horizontal>
 								<ListGroup.Item
-									style={ { display: "none" } }
-									className="bg-secondary">CCTV surveillance<CloseButton className="mx-2" onClick={ setCloseButton(false) } /></ListGroup.Item>
+									style={ { display: closeButton ? "none" : "" } }
+									className="bg-secondary">{ }CCTV surveillance<CloseButton className="mx-2" onClick={ closeFilter } /></ListGroup.Item>
 							</ListGroup>
 						</Col>
 					</Row>
 				</Col>
 				<Col lg={ 12 } md={ 12 } sm={ 12 } xs={ 12 }>
 					<Col md={ 12 } className="my-5">
-						{ toggle ? <MapX></MapX> : <CardSection /> }
+						{ toggle ? <MapX></MapX> : <CardSection warehouseInfo={ warehouseInfo } search={ searchInput } searchKeyword={ setSearchInput }></CardSection> }
 					</Col>
 				</Col>
 			</Row>

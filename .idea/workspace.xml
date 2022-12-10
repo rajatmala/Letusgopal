@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="88786daf-6dad-4314-9324-3314644b813b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Storage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Storage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/css/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/css/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Home/Home.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Home/StorageTab.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Home/StorageTab.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/About/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Cards/StorageCard.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Cards/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Careers/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Contact/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Filter/FilterForm.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Footer/Footer.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Footer/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Header/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Home/ShippingTab.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Home/StorageTab.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Home/Tab.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Home/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Home/tabX.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Login/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Map/Map.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Map/Map.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Register/Register.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Register/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Warehouse/RattingBar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Warehouse/Responsive.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Warehouse/WarehouseDetails.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Warehouse/WarehouseDetailsX.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Warehouse/index.js" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2Idd9RwwCgV7vVFSP6lIu2gDOEK" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="88786daf-6dad-4314-9324-3314644b813b" name="Changes" comment="" />
+      <created>1670515252327</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1670515252327</updated>
+    </task>
+    <servers />
+  </component>
+</project>

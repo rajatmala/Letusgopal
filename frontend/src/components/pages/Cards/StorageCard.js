@@ -7,7 +7,9 @@ import
     ProgressBar,
     Card
 } from "react-bootstrap";
-import { FcClock, FcRating, FcGlobe, FcCamcorderPro, FcOrgUnit } from "react-icons/fc";
+import { FcClock, FcRating, FcGlobe, FcCamcorderPro, FcOrgUnit, FcHome } from "react-icons/fc";
+import { IoMdPin } from "react-icons/io";
+import { BsCloudLightningRainFill } from "react-icons/bs";
 import { AiFillStar } from "react-icons/ai";
 import "./StorageCard.css"
 import "./progresssbar.css";
@@ -17,7 +19,7 @@ const StorageCard = (card, index) =>
     const totalArea = card.totalArea;
     const area = card.area;
     const percentage = card.percentage;
-
+    console.log(card);
     function WarehouseArea(card)
     {
         return (
@@ -39,6 +41,7 @@ const StorageCard = (card, index) =>
         navigate(path);
     }
 
+    const facility = [ "CCTV Monitoring", "Climate Control", "Indoor Storage", "Outdoor/Drive Up" ];
     return (
         <>
             <Col lg={ 3 } md={ 6 } sm={ 6 } xs={ 12 }>
@@ -49,19 +52,19 @@ const StorageCard = (card, index) =>
                         <b className=" text-dark h5">{ card.name } Warehouse</b>
                         <div className="d-flex flex-column justify-content-between mb-3">
                             <h6 className="m-1">
-                                <i><FcGlobe /> </i>
+                                <i className="h4"><IoMdPin className="text-primary mr-1" /></i>
                                 { card.location }
                             </h6>
                             <h6 className="m-1">
-                                <i><FcCamcorderPro /> </i>
+                                <i className="h4"><BsCloudLightningRainFill className="text-blue mr-1" /></i>
                                 { card.facility }
                             </h6>
                             <h6 className="m-1">
-                                <i><FcOrgUnit /> </i>
+                                <i className="h4"><FcOrgUnit className="text-blue mr-1" /> </i>
                                 { card.size }
                             </h6>
                             <h6 className="m-1">
-                                <i><AiFillStar className="text-warning" /> </i>
+                                <i className="h4"><AiFillStar className="text-warning" /> </i>
                                 { card.rating }
                                 <p className="m-0 float-right">from { card.price } ₹</p>
                             </h6>

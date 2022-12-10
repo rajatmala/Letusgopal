@@ -173,15 +173,22 @@ const WarehouseDetails = () =>
                             <h2 className="text-dark-50">Available Units<span className='mx-3 h6 text-dark'>(All Sizes are approximate)</span></h2>
                             <hr className="" />
                             <p className="lead">
-                                <Row>
+                                {/* <Row>
                                     <Col md={ 12 }><u className='text-dark text-black-50'> Sort & Filter</u></Col>
-                                </Row>
+                                </Row> */}
                                 <Row className='my-3'>
                                     <Col md={ 6 }>
                                         <Form.Label>Select Unit Type:</Form.Label>
                                         <Form.Select size="sm">
                                             <option>Split Level Storage</option>
                                             <option>Storage Locker</option>
+                                        </Form.Select>
+                                    </Col>
+                                    <Col md={ 6 }>
+                                        <Form.Label>Sort By:</Form.Label>
+                                        <Form.Select size="sm">
+                                            <option>Price</option>
+                                            <option>Size</option>
                                         </Form.Select>
                                     </Col>
                                 </Row>

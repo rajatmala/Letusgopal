@@ -1,11 +1,12 @@
 import React from "react";
-import TabX from "./Tab";
+import TabX from "./pages/Home/Tab";
 import
 {
     Container,
     Row,
     Col,
     Card,
+    Carousel
 } from "react-bootstrap";
 
 // import "./css/MainPage.css";
@@ -17,8 +18,8 @@ const MainPage = () =>
         <>
             <Container fluid className="p-0 mt-5" style={ { zIndex: 7 } }>
                 <Row>
-                    <Col md={ 8 }>
-                        <div className="container-fluid p-0">
+                    <Col md={ 8 } sm={ 12 } xs={ 12 }>
+                      <div className="container-fluid p-0">
                             <div
                                 id="header-carousel"
                                 className="carousel slide carousel-fade"
@@ -34,7 +35,7 @@ const MainPage = () =>
                                         <img
                                             className="position-relative w-100"
                                             src="/images/s3.jpg"
-                                            style={ { minHeight: 300, objectFit: "cover" } }
+                                            style={ { minHeight: 250, objectFit: "cover" } }
                                             alt="cover"
                                         />
                                         <div className="carousel-caption d-flex align-items-center justify-content-center">
@@ -52,7 +53,7 @@ const MainPage = () =>
                                         <img
                                             className="position-relative w-100"
                                             src="/images/s6.jpg"
-                                            style={ { minHeight: 300, objectFit: "cover" } }
+                                            style={ { minHeight: 250, objectFit: "cover" } }
                                             alt="cover"
                                         />
                                         <div className="carousel-caption d-flex align-items-center justify-content-center">
@@ -76,7 +77,7 @@ const MainPage = () =>
                                         <img
                                             className="position-relative w-100"
                                             src="/images/s2.jpg"
-                                            style={ { minHeight: 300, objectFit: "cover" } }
+                                            style={ { minHeight: 250, objectFit: "cover" } }
                                             alt="cover"
                                         />
                                         <div className="carousel-caption d-flex align-items-center justify-content-center">
@@ -99,8 +100,48 @@ const MainPage = () =>
                                 </div>
                             </div>
                         </div>
+
+                        {/* <Carousel>
+                            <Carousel.Item>
+                                <img
+                                    className="d-block w-100"
+                                    src="/images/s1.jpg"
+                                    alt="First slide"
+                                />
+                                <Carousel.Caption>
+                                    <h3>First slide label</h3>
+                                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <img
+                                    className="d-block w-100"
+                                    src="/images/s2.jpg"
+                                    alt="Second slide"
+                                />
+
+                                <Carousel.Caption>
+                                    <h3>Second slide label</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <img
+                                    className="d-block w-100"
+                                    src="/images/s3.jpg"
+                                    alt="Third slide"
+                                />
+
+                                <Carousel.Caption>
+                                    <h3>Third slide label</h3>
+                                    <p>
+                                        Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+                                    </p>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                        </Carousel> */}
                     </Col>
-                    <Col md={ 4 }>
+                    <Col md={ 4 } sm={ 12 } xs={ 12 }>
                         <Card style={ { zIndex: 7 } } className="shadow p-3 mb-5 bg-white rounded">
                             <Card.Body className="cardStorageBody">
                                 <Row>

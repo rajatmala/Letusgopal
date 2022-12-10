@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 
 const Cart = () =>
 {
@@ -40,9 +41,11 @@ const Cart = () =>
                             </div>
                             <div className="card">
                                 <div className="card-body">
-                                    <button type="button" className="btn btn-warning btn-block btn-lg">
-                                        Proceed to Pay
-                                    </button>
+                                    <Link to="/checkout">
+                                        <button type="button" className="btn btn-warning btn-block btn-lg">
+                                            Proceed to Pay
+                                        </button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

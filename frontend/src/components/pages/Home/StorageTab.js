@@ -47,6 +47,13 @@ const StorageTab = () =>
   //   alert("Form Submitted");
   // };
 
+  const [ locationInput, setLocationInput ] = useState("");
+
+  const handleInputChange = (event) =>
+  {
+    setLocationInput(event.target.value);
+  }
+
   return (
     <Form>
       <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -55,6 +62,7 @@ const StorageTab = () =>
           type="text"
           placeholder="Zip or City,State or Landmark"
           name="fLocation"
+          onChange={ handleInputChange }
         />
       </Form.Group>
       <Form.Group className="mb-3 d-grid gap-2 text-center text-dark" controlId="formBasicCheckbox">

@@ -16,17 +16,18 @@ const HeaderSection = () =>
   const usertoken = localStorage.getItem("token");
   const navigate = useNavigate();
 
-  const handleLogout = (e) => {
+  const handleLogout = (e) =>
+  {
     localStorage.removeItem('token');
     navigate("/");
   }
 
   return (
     <div className="shadow-sm bg-white rounded">
-      <div className="container-fluid d-none d-lg-block">
-        <div className="row align-items-center py-4 px-xl-5">
+      <div className="container-fluid my-3">
+        <div className="row px-xl-5">
           <div className="col-lg-3">
-            <Link to="" className="text-decoration-none">
+            <Link to="" className="text-decoration-none d-none d-lg-block">
               <h1 className="m-0" style={ styles }>
                 <span className="logo">
                   <span className="ml-2">
@@ -39,66 +40,6 @@ const HeaderSection = () =>
               </h1>
             </Link>
           </div>
-          <div className="col-lg-3 text-right">
-            <div className="d-inline-flex align-items-center">
-              <i className="fa fa-2x fa-map-marker-alt text-primary mr-3" />
-              <div className="text-left">
-                <h6 className="font-weight-semi-bold mb-1">Our Office</h6>
-                <small>South Delhi, Delhi-India</small>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-3 text-right">
-            <div className="d-inline-flex align-items-center">
-              <i className="fa fa-2x fa-envelope text-primary mr-3" />
-              <div className="text-left">
-                <h6 className="font-weight-semi-bold mb-1">Email Us</h6>
-                <small>letsgopal@gmail.com</small>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-3 text-right">
-            <div className="d-inline-flex align-items-center">
-              <i className="fa fa-2x fa-phone text-primary mr-3" />
-              <div className="text-left">
-                <h6 className="font-weight-semi-bold mb-1">Call Us</h6>
-                <small>+91 86384 40694</small>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="container-fluid">
-        <div className="row border-top px-xl-5">
-          <div className="col-lg-3 d-none d-lg-block">
-            <a
-              className="d-flex align-items-center justify-content-between bg-secondary w-100 text-decoration-none"
-              data-toggle="collapse"
-              href="#navbar-vertical"
-              style={ { height: 67, padding: "0 30px" } }
-            >
-              <h5 className="text-primary m-0">
-                <i className="fa fa-book-open mr-2" />
-                Services..
-              </h5>
-              <i className="fa fa-angle-down text-primary" />
-            </a>
-            <nav
-              className="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0 bg-light"
-              id="navbar-vertical"
-              style={ { width: "calc(100% - 30px)", zIndex: 9 } }
-            >
-              <div className="navbar-nav w-100">
-                <Link to="/storage" className="nav-item nav-link">
-                  Storage
-                </Link>
-                <Link href="/logistics" className="nav-item nav-link">
-                  Logistics
-                </Link>
-              </div>
-            </nav>
-          </div>
           <div className="col-lg-9">
             <nav className="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0">
               <span className="logo-sm">
@@ -106,7 +47,7 @@ const HeaderSection = () =>
                   <img src="/images/logo.png" height={ 60 } width={ 60 } alt="" />
                 </span>
               </span>
-              <Link to="/" className="text-decoration-none d-block d-lg-none">
+              <Link to="/" className="text-decoration-none d-block d-lg-none d-xs-none">
                 <h1 className="m-0">
                   <span className="text-yellow">Let's </span>
                   <span className="text-success">Go </span>
@@ -139,13 +80,13 @@ const HeaderSection = () =>
                     Contact
                   </Link>
                 </div>
-                {usertoken!=null ? <button className="btn btn-dark text-white py-2 px-4 ml-auto d-none d-lg-block" onClick={handleLogout}>Logout</button>:
-                <Link
-                  className="btn btn-dark text-white py-2 px-4 ml-auto d-none d-lg-block"
-                  to="/login"
-                >
-                  SignIn/Orders
-                </Link>}
+                { usertoken != null ? <button className="btn btn-dark text-white py-2 px-4 ml-auto d-none d-lg-block" onClick={ handleLogout }>Logout</button> :
+                  <Link
+                    className="btn btn-success py-2 px-4 ml-auto d-none d-lg-block"
+                    to="/login"
+                  >
+                    SignIn/Orders
+                  </Link> }
                 <Link
                   to="/cart"
                   className="nav-item nav-link cart position-relative d-inline-flex"
@@ -163,7 +104,7 @@ const HeaderSection = () =>
                       </Context.Consumer>
                     </Provider>
                   </span>
-                  <i className="fas fa fa-shopping-cart fa-lg">
+                  <i className="fas fa fa-shopping-cart fa-lg text-dark">
                   </i>
                 </Link>
               </div>
