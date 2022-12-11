@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import home from "../Home/index";
 import { Link } from "react-router-dom";
 import axios from "axios";
+
 const LoginSection = () => {
   const navigate = useNavigate();
 
@@ -24,8 +24,12 @@ const LoginSection = () => {
 
     await axios({ url: "/loginUser", data: logUser, method: "post" })
       .then((data) => {
-        console.log(data.data);
-        localStorage.setItem("token", data.data);
+        localStorage.setItem("token", data.data.token);
+        if(data.data.error != null){
+          alert(data.data.error);
+        }else{
+            alert(data.data.message);
+        }
       })
       .catch((err) => {
         console.log(err);

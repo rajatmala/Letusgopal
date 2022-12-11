@@ -20,23 +20,22 @@ const UserSchema = new Schema({
         required: true,
         unique: true
     },
+    username:{
+        type: String
+    },
     contactNumberMobile: {
         type: Number,
-        required: true
     },
     contactNumberPhone: {
         type: Number,
-        required: true
     },
     Address: {
         type: String,
     },password: {
         type: String,
         required: true
-    },
-    cpassword: {
-        type: String,
-        required: true
+    },state: {
+        type: String
     },
     tokens: [
         {

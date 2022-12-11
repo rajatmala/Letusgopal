@@ -4,29 +4,26 @@ const bcrypt = require("bcryptjs");
 require("dotenv").config({path: "../config/config.env"});
 
 const register = async (req, res) => {
-  // res.send("Hi again");
-  console.log(req.body);
-  const { name, email, password, cpassword } = req.body;
+  // res.json({message:"Hi again"});
+  // console.log(req.body);
+  const { name, email, password, username, state } = req.body;
   if (!name || !email || !password) {
     return res.status(422).json({ error: "Please fill the fields properly!!" });
   }
 
   try {
-    console.log("done");
+    // console.log("done");
     const userExist = await User.findOne({ email: email });
-    console.log(userExist);
     if (userExist) {
       return res.status(422).json({ error: "Email already exist" });
-    } else if (password != cpassword) {
-      return res.status(400).json({ error: "Passwords do not match" });
-    } else {
+    }else {
       const user = new User({
         name: name,
         email: email,
         password: password,
-        cpassword: cpassword,
+        username: username,
+        state: state,
       });
-      let userRegistered;
       const rounds = 10;
       bcrypt.genSalt(rounds, (err, salt) => {
         bcrypt.hash(user.password, salt, (err, hash) => {
@@ -34,7 +31,7 @@ const register = async (req, res) => {
           user.password = hash;
           user
             .save()
-            .then((user) => res.json(user))
+            .then((user) => res.json({message: 'User registered successfully'}))
             .catch((err) => console.log(err));
         });
       });
@@ -66,7 +63,7 @@ const login = async (req, res) => {
           { id: userLogin._id, email: userLogin.email },
           process.env.ACCESS_TOKEN_SECRET
         );
-        return res.json(token).status(200);
+        return res.json({message: "User logged in successfully!!", token: token}).status(200);
       }
     } else {
       res.status(400).json({ error: "User not found" });
