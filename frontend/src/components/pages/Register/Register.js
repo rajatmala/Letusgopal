@@ -1,8 +1,67 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, {useState} from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 const Register = () =>
 {
+    const navigate = useNavigate();
+
+    const [user, setUser] = useState({
+        name: '',
+        email: '',
+        username: '',
+        password: '',
+        state: ''
+    });
+
+    const handleChange = (e) => {
+        setUser({...user, [e.target.name]:e.target.value});
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const regUser = {
+            name: user.name,
+            username: user.username,
+            email: user.email,
+            password: user.password,
+            state: user.state,
+        };
+        
+        const logUser = {
+            email: user.email,
+            password: user.password
+        }
+
+        await axios({url: "/register", data:regUser, method:"post"}).then((res)=>{
+            if(res.data.error != null){
+                alert(res.data.error);
+            }else{
+                alert(res.data.message);
+            }
+        }).catch((err)=>{
+            console.log(err);
+        });
+
+        await axios({url: "/loginUser", data:logUser, method:"post"}).then((res)=>{
+            localStorage.setItem("token", res.data.token);
+            if(res.data.error != null){
+                alert(res.data.error);
+            }
+        }).catch((err)=>{
+            console.log(err);
+        });
+
+        navigate("/profile");
+        setUser({
+            name: '',
+            email: '',
+            password: '',
+            state: '',
+            username: ''
+        })
+    }
+
     return (
         <>
             <div
@@ -50,6 +109,8 @@ const Register = () =>
                                     <form>
                                         <div className="form-group">
                                             <input
+                                                name="name"
+                                                onChange={handleChange}
                                                 type="text"
                                                 className="form-control border-0 p-4"
                                                 placeholder="Your name"
@@ -58,6 +119,8 @@ const Register = () =>
                                         </div>
                                         <div className="form-group">
                                             <input
+                                                name="email"
+                                                onChange={handleChange}
                                                 type="email"
                                                 className="form-control border-0 p-4"
                                                 placeholder="Your Email"
@@ -66,6 +129,8 @@ const Register = () =>
                                         </div>
                                         <div className="form-group">
                                             <input
+                                                name="username"
+                                                onChange={handleChange}
                                                 type="text"
                                                 className="form-control border-0 p-4"
                                                 placeholder="Your Username"
@@ -74,6 +139,8 @@ const Register = () =>
                                         </div>
                                         <div className="form-group">
                                             <input
+                                                name="password"
+                                                onChange={handleChange}
                                                 type="password"
                                                 className="form-control border-0 p-4"
                                                 placeholder="Your Password"
@@ -82,18 +149,21 @@ const Register = () =>
                                         </div>
                                         <div className="form-group">
                                             <select
+                                                name="state"
+                                                onChange={handleChange}
                                                 className="custom-select border-0 px-4"
                                                 style={ { height: 47 } }
                                             >
                                                 <option selected="">Select State</option>
-                                                <option value={ 1 }>Delhi</option>
-                                                <option value={ 2 }>Gujarat</option>
-                                                <option value={ 3 }>Maharashtra</option>
+                                                <option value={ "Delhi" }>Delhi</option>
+                                                <option value={ "Gujurat" }>Gujarat</option>
+                                                <option value={ "Maharashtra" }>Maharashtra</option>
                                             </select>
                                         </div>
                                         <div className="text-right">
                                             <button
                                                 className="btn btn-dark btn-block border-0 py-3 mb-3"
+                                                onClick={handleSubmit}
                                                 type="submit"
                                             >
                                                 Sign Up Now
