@@ -44,22 +44,24 @@ const Register = () =>
         });
 
         await axios({url: "/loginUser", data:logUser, method:"post"}).then((res)=>{
-            localStorage.setItem("token", res.data.token);
             if(res.data.error != null){
                 alert(res.data.error);
+            }else{
+                localStorage.setItem("token", res.data.token);
+                navigate("/profile");
             }
         }).catch((err)=>{
             console.log(err);
         });
 
-        navigate("/profile");
         setUser({
             name: '',
             email: '',
             password: '',
             state: '',
             username: ''
-        })
+        });
+        
     }
 
     return (
