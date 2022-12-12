@@ -1,14 +1,46 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "./tabX.css";
 import { Link } from "react-router-dom";
+import Context from "../../../Contexts/context";
+
 const StorageTab = () =>
 {
   var x = document.getElementById("demo");
+  const ctx = useContext(Context);
+
+  const facVal = ['CCTVSurvillance', 'IndoorStorage', 'DriveUp', 'ClimateControl'];
+
+  const [fac, setFac] = useState({
+    c1: false,
+    c2: false,
+    c3: false,
+    c4: false
+  });
+
+  const handleCheckChange = (e) => {
+    const id = e.target.id;
+    let val = fac[id];
+    val = !val;
+    setFac({...fac, [id]:val});
+  }
 
   function getLocation()
   {
+    const arr = [];
+    for(let i=1;i<=4;i++){
+      const str = "c" + i.toString();
+      if(fac[str]){
+        arr.push(facVal[i-1]);
+      }
+    }
+    const param1 = {
+      "location": locationInput,
+      "facalities": arr
+    }
+    ctx.update(param1);
+    
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition);
     } else {
@@ -74,6 +106,7 @@ const StorageTab = () =>
           label="CCTV surveillance"
           name="checkType"
           type="checkbox"
+          onChange={handleCheckChange}
         />
         <Form.Check
           id="c2"
@@ -82,6 +115,7 @@ const StorageTab = () =>
           label="Indoor Storage"
           name="checkType"
           type="checkbox"
+          onChange={handleCheckChange}
         />
         <Form.Check
           id="c3"
@@ -90,6 +124,7 @@ const StorageTab = () =>
           label="Outdoor/Drive Up"
           name="checkType"
           type="checkbox"
+          onChange={handleCheckChange}
         />
         <Form.Check
           id="c4"
@@ -98,6 +133,7 @@ const StorageTab = () =>
           label="Climate Control"
           name="checkType"
           type="checkbox"
+          onChange={handleCheckChange}
         />
       </Form.Group>
       <Form.Group className="mb-3 text-center">

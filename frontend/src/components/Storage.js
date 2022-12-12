@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import
 {
 	Container,
@@ -20,6 +20,8 @@ import CardSection from "./pages/Cards/Card";
 import { FcSearch } from "react-icons/fc";
 import { BsFillGridFill } from "react-icons/bs";
 import { FaMap, FaFilter } from "react-icons/fa";
+import Context from "../Contexts/context";
+
 const Storage = (props) =>
 {
 	// DefaultDAta For Life
@@ -32,7 +34,8 @@ const Storage = (props) =>
 		bookType: "",
 	};
 
-
+	const ctx = useContext(Context);
+	console.log(ctx.data);
 	// States for filtering actions
 	const [ data, setData ] = useState(defaultData);
 

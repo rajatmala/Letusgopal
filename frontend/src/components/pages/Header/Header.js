@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Cart.css";
 
@@ -12,7 +12,7 @@ const styles = {
 
 const HeaderSection = () =>
 {
-
+  const ctx = useContext(Context);
   const usertoken = localStorage.getItem("token");
   const navigate = useNavigate();
 
@@ -92,17 +92,9 @@ const HeaderSection = () =>
                   className="nav-item nav-link cart position-relative d-inline-flex"
                 >
                   <span className="cart-basket d-flex align-items-center justify-content-center">
-                    <Provider>
-                      <Context.Consumer>
-                        {
-                          context => (
-                            <Fragment>
-                              { context.data }
-                            </Fragment>
-                          )
-                        }
-                      </Context.Consumer>
-                    </Provider>
+                    <Fragment>
+                      { ctx.data.cart }
+                    </Fragment>
                   </span>
                   <i className="fas fa fa-shopping-cart fa-lg text-dark">
                   </i>

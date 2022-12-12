@@ -23,10 +23,12 @@ import Profile from "./components/pages/Profile/Profile";
 import { Routes, Route } from "react-router-dom";
 import "./components/css/Style.css";
 import "./Contexts/context";
+import Provider from "./provider";
 
 const App = () =>
 {
   return (
+    <Provider>
     <div className="App">
       <Header />
       <Routes>
@@ -52,6 +54,7 @@ const App = () =>
       </Routes>
       <Footer />
     </div>
+    </Provider>
   );
 };
 
