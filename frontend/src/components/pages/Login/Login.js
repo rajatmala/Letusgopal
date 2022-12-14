@@ -14,6 +14,16 @@ const LoginSection = () => {
   const handleChange = (e) => {
     setUserDetails({ ...userDetails, [e.target.name]: e.target.value });
   };
+  
+  const log = async (userData) => {
+    try{
+      const res = await axios({ url: "/loginUser", data: userData, method: "post" });
+      return [res.data, res.status];
+    }catch (e){
+      console.log(e);
+      return [e.response.data, e.response.status];
+    }
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,19 +32,20 @@ const LoginSection = () => {
       password: userDetails.password,
     };
 
-    await axios({ url: "/loginUser", data: logUser, method: "post" })
-      .then((data) => {
-        localStorage.setItem("token", data.data.token);
-        if(data.data.error != null){
-          alert(data.data.error);
-        }else{
-            alert(data.data.message);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    navigate("/profile");
+    const waitRes = await log(logUser);
+
+    if(waitRes[1] === 200){
+      localStorage.setItem('token', waitRes[0].token);
+      alert(waitRes[0].message);
+      navigate("/profile");
+    }else{
+      alert(waitRes[0]);
+    }
+
+    setUserDetails({
+      email: '',
+      password: '',
+    });
   };
 
   return (
@@ -55,6 +66,7 @@ const LoginSection = () => {
                     <div className="form-group">
                       <input
                         name="email"
+                        value={userDetails.email}
                         onChange={handleChange}
                         type="email"
                         className="form-control border-0 p-4"
@@ -65,6 +77,7 @@ const LoginSection = () => {
                     <div className="form-group">
                       <input
                         name="password"
+                        value={userDetails.password}
                         onChange={handleChange}
                         type="password"
                         className="form-control border-0 p-4"

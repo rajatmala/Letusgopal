@@ -11,11 +11,10 @@ const app = express();
 
 // Bodyparser middleware
 app.use(
-    bodyParser.urlencoded({
-      extended: false
-    })
-  );
-
+  bodyParser.urlencoded({
+    extended: false
+  })
+);
 app.use(bodyParser.json());
 
 app.use("/", require("./router/routes.js"));
@@ -25,9 +24,6 @@ app.use("/", require("./router/routes.js"));
 //   res.send("Hi");
 // });
 
-app.use(cors({
-  origin: "http://localhost:3000",
-}));
 
 
 const dbURL =  "mongodb://localhost:27017/mern-auth";

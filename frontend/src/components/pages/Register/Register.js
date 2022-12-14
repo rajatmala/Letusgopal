@@ -10,6 +10,7 @@ const Register = () =>
         name: '',
         email: '',
         username: '',
+        mobile: '',
         password: '',
         state: ''
     });
@@ -18,12 +19,35 @@ const Register = () =>
         setUser({...user, [e.target.name]:e.target.value});
     }
 
+    const reg = async (userData) => {
+        try {
+            const res = await axios({url: "/register", data:userData, method:"post"});
+            console.log(res);
+            return [res.data, res.status];
+        } catch(e){
+            console.log(e);
+            return [e.response.data, e.response.status];
+        }
+    }
+
+    const log = async (userData) => {
+        try {
+            const res = await axios({url: "/loginUser", data:userData, method:"post"});
+            console.log(res);
+            return [res.data, res.status];
+        } catch(e){
+            console.log(e);
+            return [e.response.data, e.response.status];
+        }
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const regUser = {
             name: user.name,
             username: user.username,
             email: user.email,
+            mobile: user.mobile,
             password: user.password,
             state: user.state,
         };
@@ -32,36 +56,29 @@ const Register = () =>
             email: user.email,
             password: user.password
         }
+        
+        const waitRes1 = await reg(regUser);
 
-        await axios({url: "/register", data:regUser, method:"post"}).then((res)=>{
-            if(res.data.error != null){
-                alert(res.data.error);
-            }else{
-                alert(res.data.message);
-            }
-        }).catch((err)=>{
-            console.log(err);
-        });
+        alert(waitRes1[0]);
 
-        await axios({url: "/loginUser", data:logUser, method:"post"}).then((res)=>{
-            if(res.data.error != null){
-                alert(res.data.error);
-            }else{
-                localStorage.setItem("token", res.data.token);
+        if(waitRes1[1] === 200){
+            const waitRes2 = await log(logUser);
+            if(waitRes2[1] === 200){
+                localStorage.setItem("token", waitRes2[0].token);
                 navigate("/profile");
+            }else{
+                alert(waitRes2[0]);
             }
-        }).catch((err)=>{
-            console.log(err);
-        });
+        }
 
         setUser({
             name: '',
             email: '',
             password: '',
+            mobile: '',
             state: '',
             username: ''
         });
-        
     }
 
     return (
@@ -115,8 +132,9 @@ const Register = () =>
                                                 onChange={handleChange}
                                                 type="text"
                                                 className="form-control border-0 p-4"
-                                                placeholder="Your name"
+                                                placeholder="Your Name"
                                                 required="required"
+                                                value={user.name}
                                             />
                                         </div>
                                         <div className="form-group">
@@ -127,6 +145,7 @@ const Register = () =>
                                                 className="form-control border-0 p-4"
                                                 placeholder="Your Email"
                                                 required="required"
+                                                value={user.email}
                                             />
                                         </div>
                                         <div className="form-group">
@@ -136,7 +155,18 @@ const Register = () =>
                                                 type="text"
                                                 className="form-control border-0 p-4"
                                                 placeholder="Your Username"
-                                                required="required"
+                                                defaultValue={user.username}
+                                                value={user.username}
+                                            />
+                                        </div>
+                                        <div className="form-group">
+                                            <input
+                                                name="mobile"
+                                                onChange={handleChange}
+                                                type="number"
+                                                className="form-control border-0 p-4"
+                                                placeholder="Mobile Number"
+                                                value={user.mobile}
                                             />
                                         </div>
                                         <div className="form-group">
@@ -147,6 +177,7 @@ const Register = () =>
                                                 className="form-control border-0 p-4"
                                                 placeholder="Your Password"
                                                 required="required"
+                                                value={user.password}
                                             />
                                         </div>
                                         <div className="form-group">

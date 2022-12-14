@@ -53,7 +53,7 @@ const Profile = () => {
                                             className="rounded-circle img-fluid"
                                             style={ { width: 150 } }
                                         />
-                                        <h5 className="my-3">{user.name}</h5>
+                                        {user.username ? <h5 className="my-3">{user.username}</h5>: <h5 className="my-3">{user.name}</h5>}
                                         <p className="text-muted mb-1">Full Stack Developer</p>
                                         <p className="text-muted mb-4">Ahmadabad Gujarat</p>
                                         <div className="d-flex justify-content-center mb-2">

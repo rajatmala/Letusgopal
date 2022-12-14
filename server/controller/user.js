@@ -4,23 +4,22 @@ const bcrypt = require("bcryptjs");
 require("dotenv").config({path: "../config/config.env"});
 
 const register = async (req, res) => {
-  // res.json({message:"Hi again"});
-  // console.log(req.body);
-  const { name, email, password, username, state } = req.body;
+  const { name, email, password,mobile, username, state } = req.body;
   if (!name || !email || !password) {
-    return res.status(422).json({ error: "Please fill the fields properly!!" });
+    return res.status(422).json("Please fill the fields properly!!");
   }
 
   try {
     // console.log("done");
     const userExist = await User.findOne({ email: email });
     if (userExist) {
-      return res.status(422).json({ error: "Email already exist" });
+      return res.status(400).json("Email already exist!!!");
     }else {
       const user = new User({
         name: name,
         email: email,
         password: password,
+        contactNumberMobile: mobile,
         username: username,
         state: state,
       });
@@ -31,7 +30,7 @@ const register = async (req, res) => {
           user.password = hash;
           user
             .save()
-            .then((user) => res.json({message: 'User registered successfully'}))
+            .then((user) => res.status(200).json('User registered successfully'))
             .catch((err) => console.log(err));
         });
       });
@@ -57,16 +56,18 @@ const login = async (req, res) => {
       // token = userLogin.generateAuthToken();
 
       if (!isMatch) {
-        res.status(400).json({ error: "Invalid credentials" });
+        res.status(400).json("Invalid credentials");
       } else {
         const token = jwt.sign(
           { id: userLogin._id, email: userLogin.email },
-          process.env.ACCESS_TOKEN_SECRET
+          process.env.ACCESS_TOKEN_SECRET, {
+            expiresIn: '30d'
+        }
         );
-        return res.json({message: "User logged in successfully!!", token: token}).status(200);
+        return res.status(200).json({message: "User logged in successfully!!", token: token});
       }
     } else {
-      res.status(400).json({ error: "User not found" });
+      res.status(400).json("User not found");
     }
   } catch (err) {
     console.log(err);

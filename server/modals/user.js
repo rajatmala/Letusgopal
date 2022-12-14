@@ -26,15 +26,11 @@ const UserSchema = new Schema({
     contactNumberMobile: {
         type: Number,
     },
-    contactNumberPhone: {
-        type: Number,
-    },
-    Address: {
-        type: String,
-    },password: {
+    password: {
         type: String,
         required: true
-    },state: {
+    },
+    state: {
         type: String
     },
     tokens: [
