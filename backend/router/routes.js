@@ -38,14 +38,6 @@ router.post("/paymentVerification", paymentController.paymentVerification);
 
 router.post("/assignCarts", cartController.assignCarts);
 
-router.post('/deleteOrder', paymentController.deleteOrder);
-
-router.post('/getBooks', paymentController.getBooks);
-
-router.post('/getSubunit', warehouseController.getSubunit);
-
-router.post('/cancelBooking', paymentController.cancelBooking);
-
 // router.delete("/delete/:id", authentication, userController.deleteUser);
 
 // router.post("/tokenIsValid", userController.userTokenvalid);
