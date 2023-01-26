@@ -5,16 +5,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
 // Create Schema
-
-
-
-// dewdw
 const UserSchema = new Schema({
-    user_id: {
-        type: String,
-        required: true,
-        default: Date.now
-    },
     name: {
         type: String,
         required: true
@@ -37,13 +28,13 @@ const UserSchema = new Schema({
     state: {
         type: String
     },
-    tokens: [
-        {
-            token:{
-                type: String,
-            }
-        }
-    ]
+    profileImage: {
+        type: String
+    },
+    isAdmin: {
+        type: Boolean,
+        default: false
+    }
 });
 
 // UserSchema.pre('save', async function(next){

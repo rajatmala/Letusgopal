@@ -12,31 +12,20 @@ const BookSchema = new Schema({
         type: String
     },
     user_id: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     },
-    subUnit_id: {
-        type: String
+    subunit_id: {
+        type: Schema.Types.ObjectId,
+        ref: 'Subunit'
     },
-    fromOcc: {
+    occupiedFrom: {
         type: Number,
-        default: Date.now
+        default: 0
     },
-    toOcc: {
+    occupiedTo: {
         type: Number,
-        default: Date.now
-    },
-    Name: {
-        type: String
-    },
-    Size: {
-        type: String
-    },
-    Price: {
-        type: Number
-    },
-    isActive: {
-        type: Boolean,
-        default: true
+        default: 0
     }
 });
 
