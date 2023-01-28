@@ -22,7 +22,7 @@ const register = async (req, res) => {
       return res.status(400).json("Email already exist!!!");
     } else {
       const data = await isEmailValid(email);
-      console.log(data);
+      // console.log(data);
       if(!data.valid)
       {
         return res.status(400).json("Please enter valid email");
