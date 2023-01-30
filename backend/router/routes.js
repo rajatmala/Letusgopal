@@ -26,8 +26,6 @@ router.post("/getAllMyWareHouses", warehouseController.getAllMyWareHouses);
 
 router.post("/getMyWareHouses", warehouseController.getMyWareHouses);
 
-router.post("/editPrice", warehouseController.editPrice);
-
 router.post("/verifyWarehouse", warehouseController.verifyWarehouse);
 
 router.post("/addToCart", cartController.addToCart);

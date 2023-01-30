@@ -15,7 +15,7 @@ const SubunitSchema = new Schema({
         required: true
     },
     width: {
-        type: SNumber,
+        type: Number,
         required: true,
     },
     height:{
