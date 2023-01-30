@@ -1,5 +1,7 @@
 const User = require("../modals/user");
+const mongoose = require('mongoose');
 const Warehouse = require("../modals/warehouse");
+const Subunit = require("../modals/subunit");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 require("dotenv").config({path: "../config/config.env"});
@@ -28,7 +30,7 @@ const warehouseRegister = async (req,res) => {
     // console.log(subUnits);
     try {
         const warehouse = new Warehouse({
-            user_id: user_id,
+            user_id: mongoose.Types.ObjectId(user_id),
             name: name,
             email: email,
             businessName: businessName,
@@ -37,13 +39,30 @@ const warehouseRegister = async (req,res) => {
             city: city,
             state: state,
             zip: zip,
-            subUnits: subUnits,
             features: features
         });
-        warehouse.save()
-        .then((user) => res.status(200).json('WareHouse registered successfully'))
-        .catch((err) => console.log(err));
-        // res.status(200).json("temp done");
+        let warehouse_id = null;
+        await warehouse.save()
+        .then(res => warehouse_id = mongoose.Types.ObjectId(res._id))
+        .catch(err => console.log(err))
+        if(warehouse_id){
+            subUnits.map(async (ele,ind) => {
+                try{
+                    ele.warehouse_id = warehouse_id;
+                    const subunit = new Subunit(ele);
+                    const resSubunitReg = await subunit.save();
+                    if(resSubunitReg){
+                        return res.status(200).json({message: 'WareHouse registered successfully'});
+                    }else{
+                        return res.status(401).json({message: "Subunits are not saved properly"});
+                    }
+                }catch(err){
+                    console.log(err);
+                }
+            });
+        }else{
+            return res.status(401).json({message: "Subunits are not saved properly"});
+        }
     } catch (err) {
         console.log(err);
     }
@@ -78,26 +97,6 @@ const getMyWareHouses = async (req,res) => {
     }
 }
 
-const editPrice = async (req,res) => {
-    const id = req.body.id;
-    const price = req.body.price;
-    const warehouseID = req.body.warehouseID;
-
-    try {
-        const data = await Warehouse.updateOne({_id: warehouseID,"subUnits._id": id}, {
-            $set: {
-                "subUnits.$.price": price
-            }
-        }, function(err) {
-            console.log(err);
-        });
-        res.send(data);
-    }catch(err){
-        res.send(err);
-    }
-    // console.log(id);
-    // console.log(warehouseID);
-}
 
 const verifyWarehouse = async (req,res) => {
     const id = req.body.id;
@@ -142,7 +141,6 @@ module.exports = {
     getAllWarehouse,
     getAllMyWareHouses,
     getMyWareHouses,
-    editPrice,
     verifyWarehouse,
     getSubunit
 };
