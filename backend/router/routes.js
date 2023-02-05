@@ -22,9 +22,9 @@ router.post("/warehouseRegister", warehouseController.warehouseRegister);
 
 router.get("/getAllWarehouse", warehouseController.getAllWarehouse);
 
-router.post("/getAllMyWareHouses", warehouseController.getAllMyWareHouses);
+router.post("/getUserWareHouses", warehouseController.getUserWareHouses);
 
-router.post("/getMyWareHouses", warehouseController.getMyWareHouses);
+router.post("/getWarehouseWithSubunit", warehouseController.getWarehouseWithSubunit);
 
 router.post("/verifyWarehouse", warehouseController.verifyWarehouse);
 

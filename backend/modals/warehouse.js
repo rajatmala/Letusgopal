@@ -44,9 +44,13 @@ const WarehouseSchema = new Schema({
             type: String
         }
     ],
-    isVerified: false,
+    isVerified: {
+        type: Boolean,
+        default: false
+    },
     status: {
-        type: String
+        type: String,
+        default: "none"
     }
 });
 
