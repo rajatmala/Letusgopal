@@ -50,7 +50,7 @@ const register = async (req, res) => {
       });
     }
   } catch (err) {
-    console.log(err);
+    return res.status(402).json({message: "Something went wrong!!"});
   }
 };
 
@@ -89,7 +89,7 @@ const login = async (req, res) => {
       return res.status(400).json("User not found");
     }
   } catch (err) {
-    console.log(err);
+    return res.status(402).json({message: "Something went wrong!!"});
   }
 };
 

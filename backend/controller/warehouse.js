@@ -61,7 +61,7 @@ const warehouseRegister = async (req,res) => {
             return res.status(401).json({message: "Subunits are not saved properly"});
         }
     } catch (err) {
-        console.log(err);
+        return res.status(402).json({message: "Something went wrong!!"});
     }
 }
 
@@ -109,7 +109,7 @@ const verifyWarehouse = async (req,res) => {
         });
         res.send(data);
     }catch(err){
-        res.send(err);
+        return res.status(402).json({message: "Something went wrong!!"});
     }
 }
 
