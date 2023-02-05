@@ -42,7 +42,24 @@ const getReview = async (req, res) => {
   }
 };
 
+const canWriteReview = async(req, res) => {
+  const warehouse_id = req.body.warehouse_id;
+  const user_id = req.body.user_id;
+  try{
+    const data = await Warehouse.findById(warehouse_id).lean();
+    if(data.user_id == user_id)
+      res.json({ message: false });
+    // similarly check for if the user had previously booked or not
+    // and any one of them is false return false else return true 
+    else 
+     res.json({ message: true });
+  } catch (err) {
+    res.status(400).json({ error: err });
+  }
+}
+
 module.exports = {
   addReview,
   getReview,
+  canWriteReview
 };

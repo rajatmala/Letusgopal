@@ -30,7 +30,9 @@ router.post("/verifyWarehouse", warehouseController.verifyWarehouse);
 
 router.post("/addReview", ratingController.addReview);
 
-router.get("/getReview", ratingController.getReview);
+router.post("/getReview", ratingController.getReview);
+
+router.post("/canWriteReview", ratingController.canWriteReview);
 
 router.post("/addToCart", cartController.addToCart);
 
