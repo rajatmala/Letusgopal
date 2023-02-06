@@ -38,7 +38,14 @@ const getUserBooking = async (req, res) => {
     try {
         const myBooking = await Book.findOne({user_id: user_id});
         if (myBooking) {
-            return res.status(200).json(myBooking);
+            let bookedSubunits = [];
+            myBooking.map(async (ele, ind) => {
+                const subunit = await Subunit.findOne({_id: ele.subunit_id}).clone().lean();
+                if(subunit){
+                    bookedSubunits.push(subunit);
+                }
+            });
+            return res.status(200).json(bookedSubunits);
         } else {
             return res.status(401).json({ message: "No booking found" });
         }
