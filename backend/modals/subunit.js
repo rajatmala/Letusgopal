@@ -28,7 +28,7 @@ const SubunitSchema = new Schema({
     },
     images: [
         {
-            type: String,
+            type: Buffer,
         }
     ],
     status: {

@@ -63,7 +63,13 @@ const WarehouseSchema = new Schema({
     lng: {
         type: String,
         default: null
-    }
+    },
+    images: [
+        {
+            type: String,
+            default: ""
+        }
+    ]
 });
 
 

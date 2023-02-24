@@ -17,7 +17,8 @@ const warehouseRegister = async (req,res) => {
         zip,
         subUnits,
         features,
-        coordinates } = req.body;
+        coordinates,
+        images } = req.body;
 
     if(!user_id){
         return res.status(401).json("User not logged in");
@@ -26,7 +27,6 @@ const warehouseRegister = async (req,res) => {
     if (!name&&!email&&!businessName&&!contactNumberMobile&&!businessAddress&&!city&&!state&&!zip&&!subUnits) {
         return res.status(422).json("Please fill all the fields");
     }
-    // console.log(subUnits);
     try {
         const warehouse = new Warehouse({
             user_id: mongoose.Types.ObjectId(user_id),
@@ -39,6 +39,7 @@ const warehouseRegister = async (req,res) => {
             state: state,
             zip: zip,
             features: features,
+            images: images,
             lat: coordinates[1],
             lng: coordinates[0]
         });
@@ -65,6 +66,7 @@ const warehouseRegister = async (req,res) => {
             return res.status(401).json({message: "Subunits are not saved properly"});
         }
     } catch (err) {
+        console.log(err);
         return res.status(402).json({message: "Something went wrong!!"});
     }
 }

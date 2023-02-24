@@ -1,4 +1,5 @@
 import filterData from "../../../assets/filter";
+// data:image/jpeg;base64,
 import React, { useState, useContext, useEffect, useRef } from "react";
 import {
   Container,
@@ -28,7 +29,19 @@ import { Context } from "../../../Contexts/context";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import mapboxgl from "mapbox-gl";
+import ReactS3 from 'react-s3';
+import { Buffer } from "buffer";
 mapboxgl.accessToken = "pk.eyJ1IjoibGF6eWdob3N0IiwiYSI6ImNsY293dHF1dzAydHEzc2xyMjUwczBuMW4ifQ.atwKqBdRVNLk_saQmszluQ";
+Buffer.from("anything", "base64");
+window.Buffer = window.Buffer || require("buffer").Buffer;
+
+const config = {
+  bucketName: 'warelogg',
+  albumName: 'photos',
+  region: 'ap-northeast-1',
+  accessKeyId: 'AKIA44CYFLK6HKQSIMLJ',
+  secretAccessKey: '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'
+}
 
 const BecomePartner = () => {
   const navigate = useNavigate();
@@ -316,6 +329,14 @@ const BecomePartner = () => {
       subunit.price = parseInt(inputPrice[i]);
       finalArr2.push(subunit);
     }
+    let bufferImg = [];
+
+    for(let i=0;i<images.length;i++){
+      const data = await ReactS3.uploadFile(images[i].file, config);
+      if(data){
+        bufferImg.push(data.location);
+      }
+    }
 
     const wareHouseDetails = {
       user_id: wareHouse.user_id,
@@ -329,9 +350,11 @@ const BecomePartner = () => {
       zip: wareHouse.zip,
       subUnits: finalArr2,
       features: finalArr,
+      images: bufferImg
     };
 
     console.log(wareHouseDetails);
+
     const {businessAddress, city, state} = wareHouseDetails;
     let coordinate = [null, null];
     if(businessAddress && businessAddress!="" && city && city !="" && state && state!=""){
