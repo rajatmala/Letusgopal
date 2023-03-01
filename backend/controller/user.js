@@ -6,7 +6,7 @@ const emailValidator = require('deep-email-validator');
 require("dotenv").config({ path: "../config/config.env" });
 
 async function isEmailValid(email) {
-  return emailValidator.validate(email)
+  return true;
 }
 
 const register = async (req, res) => {

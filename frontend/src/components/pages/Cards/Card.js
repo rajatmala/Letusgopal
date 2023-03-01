@@ -177,7 +177,7 @@ const CardSection = ({ warehouseInfo, filter=[] }) =>
                         return <Col lg={ 3 } md={ 4 } sm={ 6 } xs={ 12 } key={ key } >
                             <Card className={adminPath==="/admin"?"rounded shadow bg-white overflow-hidden mb-2 my-4":"rounded shadow bg-white overflow-hidden mb-2 my-4 cardHover"} onClick={ () =>
                                 routeChange(warehouse._id) }>
-                                <img className="img-fluid" src="images/s5.jpg" alt="" />
+                                    {warehouse?.images.length>0 ? <img className="img-fluid" src={warehouse.images[0]} alt="" /> : <img className="img-fluid" src="images/s5.jpg" alt="" />}
                                     <div className="bg-secondary d-flex paddingInCity justify-content-between">
                                         <div>
                                             <i className="h4"><MdOutlineLocationOn className="text-primary mr-1" /></i>

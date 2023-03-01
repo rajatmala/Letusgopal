@@ -138,31 +138,58 @@ const Warehouse = () => {
                         <Card.Body className="cardStorageBody">
                             <Row>
                                 <Col lg={6} md={6} sm={12} xs={12} className="shadow-sm p-3 mb-5 bg-white rounded">
-                                    <Carousel>
-                                        <Carousel.Item className="warehouseCarousel">
-                                            <img
-                                                className="d-block w-100 h-100"
-                                                src="images/s3.jpg"
-                                                alt="First slide"
-                                            />
-                                        </Carousel.Item>
-                                        <Carousel.Item className="warehouseCarousel">
-                                            <img
-                                                className="d-block w-100 h-100"
-                                                src="images/s4.jpg"
-                                                alt="Second slide"
-                                            />
-                                        </Carousel.Item>
-                                        <Carousel.Item className="warehouseCarousel">
-                                            <img
-                                                className="d-block w-100 h-100"
-                                                src="images/s6.jpg"
-                                                alt="Third slide"
-                                            />
-                                        </Carousel.Item>
-                                    </Carousel>
+                                    
+                                        {warehouse?.images.length > 0 ? <Carousel>
+                                            {warehouse?.images.map((el, ind) => {
+                                                return (<Carousel.Item className="warehouseCarousel">
+                                                    <img
+                                                        className="d-block w-100 h-100"
+                                                        src={el}
+                                                        alt="First slide"
+                                                    />
+                                                </Carousel.Item>);
+                                            })}
+                                        </Carousel>: <Carousel>
+                                            <Carousel.Item className="warehouseCarousel">
+                                                <img
+                                                    className="d-block w-100 h-100"
+                                                    src="images/s3.jpg"
+                                                    alt="First slide"
+                                                />
+                                            </Carousel.Item>
+                                            <Carousel.Item className="warehouseCarousel">
+                                                <img
+                                                    className="d-block w-100 h-100"
+                                                    src="images/s4.jpg"
+                                                    alt="Second slide"
+                                                />
+                                            </Carousel.Item>
+                                            <Carousel.Item className="warehouseCarousel">
+                                                <img
+                                                    className="d-block w-100 h-100"
+                                                    src="images/s6.jpg"
+                                                    alt="Third slide"
+                                                />
+                                            </Carousel.Item>
+                                        </Carousel>}
+                                    {/* </Carousel> */}
                                 </Col>
                                 <Col md={6}>
+                                    {warehouse?.images.length > 0 ? <Row>
+                                            {warehouse.images.map((el, ind) => {
+                                                if(ind < 4){
+                                                    return (
+                                                        <Col md={6}>
+                                                        <img
+                                                            className="d-block w-100 imgSquare mb-2"
+                                                            src={el}
+                                                            alt="First slide"
+                                                        />
+                                                        </Col>
+                                                    )
+                                                }
+                                            })}
+                                    </Row>:
                                     <Row>
                                         <Col md={6}>
                                             <img
@@ -192,7 +219,7 @@ const Warehouse = () => {
                                                 alt="First slide"
                                             />
                                         </Col>
-                                    </Row>
+                                    </Row>}
                                     <Link to="/allImages">
                                         <Button className='float-right mt-2' variant='secondary' size="small"><FcPicture /> All Images</Button>
                                     </Link>
