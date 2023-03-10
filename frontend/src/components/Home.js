@@ -10,6 +10,9 @@ import { GiCheckMark } from "react-icons/gi";
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
 import NewsCarousel from "./Owl"
+import { useSpring, animated } from "@react-spring/web";
+import { useInView } from "react-intersection-observer";
+import Supporter from "./Supporter"
 
 const MainPage = (props) => {
   const Navigate = useNavigate()
@@ -40,6 +43,36 @@ const MainPage = (props) => {
     }
   };
   
+  const [ref1, inView1] = useInView({ threshold: 0 });
+  const customAnime1 = useSpring({
+    opacity: inView1 ? 1 : 0,
+    transform: inView1 ? "scale(1)" : "scale(0.5)",
+  });
+
+  const [ref2, inView2] = useInView({ threshold: 0 });
+  const customAnime2 = useSpring({
+    opacity: inView2 ? 1 : 0,
+    transform: inView2 ? "scale(1)" : "scale(0.5)",
+  });
+
+  const [ref3, inView3] = useInView({ threshold: 0 });
+  const customAnime3 = useSpring({
+    opacity: inView3 ? 1 : 0,
+    transform: inView3 ? "scale(1)" : "scale(0.5)",
+  });
+
+  const [ref4, inView4] = useInView({ threshold: 0 });
+  const customAnime4 = useSpring({
+    opacity: inView4 ? 1 : 0,
+    transform: inView4 ? "scale(1)" : "scale(0.5)",
+  });
+
+  const [ref5, inView5] = useInView({ threshold: 0 });
+  const customAnime5 = useSpring({
+    opacity: inView5 ? 1 : 0,
+    transform: inView5 ? "scale(1)" : "scale(0.5)",
+  });
+
   return (
     <>
       <Container fluid className="p-0 mt-5" style={{ zIndex: 7 }}>
@@ -196,8 +229,10 @@ const MainPage = (props) => {
         <section class="features-grid">
   
   <article class="features-group">
-    <div class="features-image">
-      <img src="/images/warehouse-3d.png" alt="Illustration of a man touching a large check icon" />
+    <div class="features-image" ref={ref1}>
+    <animated.div style={customAnime1}>
+        <img src="/images/warehouse-3d.png" alt="Illustration of a man touching a large check icon" />
+      </animated.div>
     </div>
     <div class="features-text">
       <h2>Optimisation of storage capacity using 3D-modeling</h2>
@@ -206,8 +241,10 @@ const MainPage = (props) => {
   </article>
   
   <article class="features-group">
-    <div class="features-image inverse">
-      <img src="/images/india-map.png" alt="Illustration of a woman standing next to a screen with portfolio items" />
+    <div class="features-image inverse" ref={ref2}>
+      <animated.div style={customAnime2}>
+        <img src="/images/india-map.png" alt="Illustration of a woman standing next to a screen with portfolio items" />
+      </animated.div>
     </div>
     <div class="features-text">
       <h2>Mapping out Warehouses for smooth transportation of valuable goods</h2>
@@ -216,8 +253,10 @@ const MainPage = (props) => {
   </article>
   
   <article class="features-group">
-    <div class="features-image">
-      <img src="/images/tech-image.png" alt="Illustration of a man in a suit pointing to a bar chart that is going up" />
+    <div class="features-image" ref={ref3}>
+    <animated.div style={customAnime3}>
+        <img src="/images/tech-image.png" alt="Illustration of a man in a suit pointing to a bar chart that is going up" />
+      </animated.div>
     </div>
     <div class="features-text">
       <h2>Modernizing traditional warehouses with latest technology</h2>
@@ -226,8 +265,10 @@ const MainPage = (props) => {
   </article>
   
   <article class="features-group">
-    <div class="features-image inverse">
-      <img src="/images/storage.png" alt="Illustration of a woman standing next to a mail envelope" />
+    <div class="features-image inverse" ref={ref4}>
+        <animated.div style={customAnime4}>
+        <img src="/images/storage.png" alt="Illustration of a woman standing next to a mail envelope" />
+      </animated.div>
     </div>
     <div class="features-text">
       <h2>Realtime visibility of unused capacity of warehouses</h2>
@@ -236,8 +277,10 @@ const MainPage = (props) => {
   </article>
 
   <article class="features-group">
-    <div class="features-image">
-      <img src="/images/cold-store.png" alt="Illustration of a man in a suit pointing to a bar chart that is going up" />
+    <div class="features-image" ref={ref5}>
+        <animated.div style={customAnime5}>
+        <img src="/images/cold-store.png" alt="Illustration of a man in a suit pointing to a bar chart that is going up" />
+      </animated.div>
     </div>
     <div class="features-text">
       <h2>Optimizing cold storage facility to minimize food waste and maximize preservation</h2>
@@ -245,7 +288,7 @@ const MainPage = (props) => {
     </div>
   </article>
 </section>
-        <Row className="d-flex" style={{margin:"10rem 3rem"}}>
+        {/* <Row className="d-flex" style={{margin:"10rem 3rem"}}>
           <Col md={3} xs={12} className="px-0 mb-2">
           <card className="d-flex h-100 justify-content-center align-items-center mr-2" style={{boxShadow: "#49505766 2px 0px 10px -1px"}}><h3 className="h-auto text-center mb-0  my-4">Our Supporters</h3></card>
           </Col>
@@ -293,8 +336,10 @@ const MainPage = (props) => {
             /></div>
           </Carousel>
           </Col>
-        </Row>
-        <NewsCarousel/>
+        </Row> */}
+        {/* <NewsCarousel/> */}
+        <div className="supporter-text"><span className="supporter-commas"> &ldquo;</span>Our Esteemed Supporters<span className="supporter-commas">”</span></div>
+        <Supporter/>
       </Container>
       <div
         className="container-fluid py-5 px-sm-3 px-lg-5"
