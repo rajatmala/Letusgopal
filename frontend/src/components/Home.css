@@ -730,3 +730,30 @@
                 color: #ed4e40;
         }
 }
+
+
+.supporter-text {
+        font-size: 3rem;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 40px;
+        margin-top: 170px;
+}
+
+.supporter-commas {
+        font-size: 4rem;
+        color: #ed4e40;
+}
+
+@media (max-width: 585px) {
+        .supporter-text {
+                font-size: 30px;
+                width: 100%;
+                text-align: center;
+        }
+
+        .supporter-commas {
+                font-size: 40px;
+                color: #ed4e40;
+        }
+}
